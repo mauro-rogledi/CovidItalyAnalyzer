@@ -33,27 +33,30 @@
             this.btnRefresh = new MetroFramework.Controls.MetroLink();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.tpgRegions = new System.Windows.Forms.TabPage();
-            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.spcRegionUp = new System.Windows.Forms.SplitContainer();
+            this.emhRegionUp = new System.Windows.Forms.Integration.ElementHost();
+            this.cctRegionUp = new LiveCharts.Wpf.CartesianChart();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.cbbRegionRegion = new MetroFramework.Controls.MetroComboBox();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.tpgCounty = new System.Windows.Forms.TabPage();
+            this.cbbCountyCounty = new MetroFramework.Controls.MetroComboBox();
+            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.cbbCountyRegion = new MetroFramework.Controls.MetroComboBox();
-            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
-            this.cbbCountyCounty = new MetroFramework.Controls.MetroComboBox();
             this.tpgCharts = new System.Windows.Forms.TabPage();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
-            this.cartesianChart1 = new LiveCharts.Wpf.CartesianChart();
+            this.emhRegionDown = new System.Windows.Forms.Integration.ElementHost();
+            this.cctRegionDown = new LiveCharts.Wpf.CartesianChart();
             this.metroTabControl1.SuspendLayout();
             this.tpgRegions.SuspendLayout();
-            this.tpgCounty.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spcRegionUp)).BeginInit();
+            this.spcRegionUp.Panel1.SuspendLayout();
+            this.spcRegionUp.Panel2.SuspendLayout();
+            this.spcRegionUp.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.tpgCounty.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSettings
@@ -94,19 +97,52 @@
             this.tpgRegions.Name = "tpgRegions";
             this.tpgRegions.UseVisualStyleBackColor = true;
             // 
-            // metroLabel1
+            // panel2
             // 
-            resources.ApplyResources(this.metroLabel1, "metroLabel1");
-            this.metroLabel1.Name = "metroLabel1";
+            this.panel2.Controls.Add(this.spcRegionUp);
+            resources.ApplyResources(this.panel2, "panel2");
+            this.panel2.Name = "panel2";
+            // 
+            // spcRegionUp
+            // 
+            resources.ApplyResources(this.spcRegionUp, "spcRegionUp");
+            this.spcRegionUp.Name = "spcRegionUp";
+            // 
+            // spcRegionUp.Panel1
+            // 
+            this.spcRegionUp.Panel1.Controls.Add(this.emhRegionUp);
+            // 
+            // spcRegionUp.Panel2
+            // 
+            this.spcRegionUp.Panel2.Controls.Add(this.emhRegionDown);
+            // 
+            // emhRegionUp
+            // 
+            resources.ApplyResources(this.emhRegionUp, "emhRegionUp");
+            this.emhRegionUp.Name = "emhRegionUp";
+            this.emhRegionUp.Child = this.cctRegionUp;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.cbbRegionRegion);
+            this.panel1.Controls.Add(this.metroLabel1);
+            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Name = "panel1";
             // 
             // cbbRegionRegion
             // 
-            this.cbbRegionRegion.DisplayMember = "denominazione_regione";
+            this.cbbRegionRegion.DisplayMember = "display";
             this.cbbRegionRegion.FormattingEnabled = true;
             resources.ApplyResources(this.cbbRegionRegion, "cbbRegionRegion");
             this.cbbRegionRegion.Name = "cbbRegionRegion";
             this.cbbRegionRegion.UseSelectable = true;
-            this.cbbRegionRegion.ValueMember = "codice_regione";
+            this.cbbRegionRegion.ValueMember = "value";
+            this.cbbRegionRegion.SelectedIndexChanged += new System.EventHandler(this.cbbRegionRegion_SelectedIndexChanged);
+            // 
+            // metroLabel1
+            // 
+            resources.ApplyResources(this.metroLabel1, "metroLabel1");
+            this.metroLabel1.Name = "metroLabel1";
             // 
             // tpgCounty
             // 
@@ -118,26 +154,6 @@
             this.tpgCounty.Name = "tpgCounty";
             this.tpgCounty.UseVisualStyleBackColor = true;
             // 
-            // metroLabel2
-            // 
-            resources.ApplyResources(this.metroLabel2, "metroLabel2");
-            this.metroLabel2.Name = "metroLabel2";
-            // 
-            // cbbCountyRegion
-            // 
-            this.cbbCountyRegion.DisplayMember = "denominazione_regione";
-            this.cbbCountyRegion.FormattingEnabled = true;
-            resources.ApplyResources(this.cbbCountyRegion, "cbbCountyRegion");
-            this.cbbCountyRegion.Name = "cbbCountyRegion";
-            this.cbbCountyRegion.UseSelectable = true;
-            this.cbbCountyRegion.ValueMember = "codice_regione";
-            this.cbbCountyRegion.SelectedIndexChanged += new System.EventHandler(this.cbbCountyRegion_SelectedIndexChanged);
-            // 
-            // metroLabel3
-            // 
-            resources.ApplyResources(this.metroLabel3, "metroLabel3");
-            this.metroLabel3.Name = "metroLabel3";
-            // 
             // cbbCountyCounty
             // 
             this.cbbCountyCounty.DisplayMember = "denominazione_provincia";
@@ -147,38 +163,36 @@
             this.cbbCountyCounty.UseSelectable = true;
             this.cbbCountyCounty.ValueMember = "codice_provincia";
             // 
+            // metroLabel3
+            // 
+            resources.ApplyResources(this.metroLabel3, "metroLabel3");
+            this.metroLabel3.Name = "metroLabel3";
+            // 
+            // metroLabel2
+            // 
+            resources.ApplyResources(this.metroLabel2, "metroLabel2");
+            this.metroLabel2.Name = "metroLabel2";
+            // 
+            // cbbCountyRegion
+            // 
+            this.cbbCountyRegion.DisplayMember = "display";
+            this.cbbCountyRegion.FormattingEnabled = true;
+            resources.ApplyResources(this.cbbCountyRegion, "cbbCountyRegion");
+            this.cbbCountyRegion.Name = "cbbCountyRegion";
+            this.cbbCountyRegion.UseSelectable = true;
+            this.cbbCountyRegion.ValueMember = "value";
+            this.cbbCountyRegion.SelectedIndexChanged += new System.EventHandler(this.cbbCountyRegion_SelectedIndexChanged);
+            // 
             // tpgCharts
             // 
             resources.ApplyResources(this.tpgCharts, "tpgCharts");
             this.tpgCharts.Name = "tpgCharts";
             // 
-            // panel1
+            // emhRegionDown
             // 
-            this.panel1.Controls.Add(this.cbbRegionRegion);
-            this.panel1.Controls.Add(this.metroLabel1);
-            resources.ApplyResources(this.panel1, "panel1");
-            this.panel1.Name = "panel1";
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.splitContainer1);
-            resources.ApplyResources(this.panel2, "panel2");
-            this.panel2.Name = "panel2";
-            // 
-            // splitContainer1
-            // 
-            resources.ApplyResources(this.splitContainer1, "splitContainer1");
-            this.splitContainer1.Name = "splitContainer1";
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.elementHost1);
-            // 
-            // elementHost1
-            // 
-            resources.ApplyResources(this.elementHost1, "elementHost1");
-            this.elementHost1.Name = "elementHost1";
-            this.elementHost1.Child = this.cartesianChart1;
+            resources.ApplyResources(this.emhRegionDown, "emhRegionDown");
+            this.emhRegionDown.Name = "emhRegionDown";
+            this.emhRegionDown.Child = this.cctRegionDown;
             // 
             // mainForm
             // 
@@ -190,14 +204,15 @@
             this.Name = "mainForm";
             this.metroTabControl1.ResumeLayout(false);
             this.tpgRegions.ResumeLayout(false);
-            this.tpgCounty.ResumeLayout(false);
-            this.tpgCounty.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.spcRegionUp.Panel1.ResumeLayout(false);
+            this.spcRegionUp.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.spcRegionUp)).EndInit();
+            this.spcRegionUp.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
+            this.tpgCounty.ResumeLayout(false);
+            this.tpgCounty.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -218,9 +233,11 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TabPage tpgCharts;
-        private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.Integration.ElementHost elementHost1;
-        private LiveCharts.Wpf.CartesianChart cartesianChart1;
+        private System.Windows.Forms.SplitContainer spcRegionUp;
+        private System.Windows.Forms.Integration.ElementHost emhRegionUp;
+        private LiveCharts.Wpf.CartesianChart cctRegionUp;
+        private System.Windows.Forms.Integration.ElementHost emhRegionDown;
+        private LiveCharts.Wpf.CartesianChart cctRegionDown;
     }
 }
 

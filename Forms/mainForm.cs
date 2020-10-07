@@ -24,8 +24,11 @@ namespace CovidItalyAnalyzer.Forms
             SettingManager.ReadData();
             DataReader.ReadData(SettingManager.FolderData);
 
-            cbbRegionRegion.Items.AddRange(DataReader.italyRegions.Select(r => new { r.codice_regione, r.denominazione_regione }).ToArray());
-            cbbCountyRegion.Items.AddRange(DataReader.italyRegions.Select(r => new { r.codice_regione, r.denominazione_regione }).ToArray());
+            var regions = DataReader.ReadRegions()
+                .Select(r => new ComboData() { value = r.codice_regione, display = r.denominazione_regione }).ToArray();
+
+            cbbRegionRegion.Items.AddRange(regions);
+            cbbCountyRegion.Items.AddRange(regions);
 
             // Configure color schema
             //materialSkinManager.ColorScheme = new ColorScheme(
@@ -48,13 +51,23 @@ namespace CovidItalyAnalyzer.Forms
 
         private void cbbCountyRegion_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var a = cbbCountyRegion.SelectedItem;
-            var b = (int)a.GetType().GetProperty("codice_regione").GetValue(a, null);
+            //var item = cbbCountyRegion.SelectedItem as ComboData;
+            //var b = (int)a.GetType().GetProperty("codice_regione").GetValue(a, null);
 
             cbbCountyCounty.Items.Clear();
-            cbbCountyCounty.Items.AddRange(DataReader.italyCounties
-                                            .Where(c => c.codice_regione == b && c.sigla_provincia != null)
-                                            .Select(r => new { r.codice_provincia, r.denominazione_provincia }).ToArray());
+            //cbbCountyCounty.Items.AddRange(DataReader.italyCounties
+            //                                .Where(c => c.codice_regione == b && c.sigla_provincia != null)
+            //                                .Select(r => new { r.codice_provincia, r.denominazione_provincia }).ToArray());
+        }
+
+        private void cbbRegionRegion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var selected = cbbRegionRegion.SelectedItem as ComboData;
+            new ChartManager(cctRegionUp)
+                .FillChartWithWeeklyCasesByRegion(selected.value, selected.display);
+
+            new ChartManager(cctRegionDown)
+                .FillChartWithWeeklySwabCasesByRegion(selected.value, selected.display);
         }
     }
 

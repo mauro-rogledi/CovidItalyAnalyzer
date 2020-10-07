@@ -79,6 +79,7 @@
     <Compile Include="Forms\mainForm.Designer.cs">
       <DependentUpon>mainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Library\ChartManager.cs" />
     <Compile Include="Library\DataReader.cs" />
     <Compile Include="Library\SettingManager.cs" />
     <Compile Include="ModelData\CountyData.cs" />

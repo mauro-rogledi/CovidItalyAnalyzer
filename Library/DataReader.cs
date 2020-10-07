@@ -5,17 +5,25 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.Packaging;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace CovidItalyAnalyzer.Library
 {
+
+    public class ComboData
+    {
+        public int value { get; set; }
+        public string display { get; set; }
+    }
+
     public static class DataReader
     {
-        public static List<CountyData> CountyDatas;
-        public static List<RegionData> RegionDatas;
-        public static List<ItalyRegion> italyRegions;
-        public static List<ItalyCounty> italyCounties;
+        private static List<CountyData> CountyDatas;
+        private static List<RegionData> RegionDatas;
+        private static List<ItalyRegion> italyRegions;
+        private static List<ItalyCounty> italyCounties;
 
         private static string folder;
 
@@ -26,6 +34,21 @@ namespace CovidItalyAnalyzer.Library
             ReadRegionData(folderName);
             ReadItalyRegions();
             ReadItalyCounties();
+        }
+
+        internal static IOrderedEnumerable<RegionData> ReadRegionData(int region)
+        {
+            return DataReader.RegionDatas
+                 .Where(r => r.codice_regione == region)
+                 .OrderBy(d => d.data);
+        }
+
+        internal static IOrderedEnumerable<ItalyRegion> ReadRegions()
+        {
+            return italyRegions
+                .OrderBy(o => o.denominazione_regione);
+
+                //.Select(r => new  ComboData() { value = r.codice_regione, display =r.denominazione_regione }).ToArray();
         }
 
         internal static void RefreshDatas()
@@ -69,7 +92,8 @@ namespace CovidItalyAnalyzer.Library
                     new List<ItalyCounty>(), (reg, d) =>
                     {
                         reg.Add(new ItalyCounty() 
-                        { codice_regione = d.codice_regione, 
+                        { 
+                            codice_regione = d.codice_regione, 
                             denominazione_regione = d.denominazione_regione,
                             codice_provincia = d.codice_provincia,
                             denominazione_provincia = d.denominazione_provincia,
