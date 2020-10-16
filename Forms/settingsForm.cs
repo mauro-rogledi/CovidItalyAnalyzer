@@ -25,6 +25,10 @@ namespace CovidItalyAnalyzer.Forms
         private void ReadDataFromSettings()
         {
             txtFolder.Text = SettingManager.FolderData;
+            cbbUseGitHub.Checked = SettingManager.UseGitHub;
+            txtUsername.Text = SettingManager.UserName;
+            txtPassword.Text = SettingManager.Password;
+            txtEmail.Text = SettingManager.Email;
         }
 
 
@@ -41,7 +45,12 @@ namespace CovidItalyAnalyzer.Forms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            //SettingManager.FolderData = txtFolderData.Text;
+            SettingManager.FolderData = txtFolder.Text;
+            SettingManager.UseGitHub = cbbUseGitHub.Checked;
+            SettingManager.UserName = txtUsername.Text;
+            SettingManager.Password = txtPassword.Text;
+            SettingManager.Email = txtEmail.Text;
+
             SettingManager.SaveData();
             this.Close();
         }

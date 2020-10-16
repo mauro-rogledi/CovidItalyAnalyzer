@@ -22,7 +22,8 @@ namespace CovidItalyAnalyzer.Controls
             if (LicenseManager.UsageMode == LicenseUsageMode.Designtime || DesignMode)
                 return;
 
-            InitializeChart();
+            if (DataReaderRegion.HasReadData)
+                InitializeChart();
         }
 
         private void InitializeChart()

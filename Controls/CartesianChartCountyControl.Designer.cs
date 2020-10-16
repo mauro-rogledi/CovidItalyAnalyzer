@@ -66,6 +66,7 @@
             this.cbbCounty.FormattingEnabled = true;
             this.cbbCounty.Name = "cbbCounty";
             this.cbbCounty.UseSelectable = true;
+            this.cbbCounty.UseStyleColors = true;
             this.cbbCounty.ValueMember = "value";
             this.cbbCounty.SelectedIndexChanged += new System.EventHandler(this.cbbChart_SelectedIndexChanged);
             // 
@@ -74,6 +75,7 @@
             resources.ApplyResources(this.lblCountyRegion, "lblCountyRegion");
             this.lblCountyRegion.FontSize = MetroFramework.MetroLabelSize.Small;
             this.lblCountyRegion.Name = "lblCountyRegion";
+            this.lblCountyRegion.UseStyleColors = true;
             // 
             // cbbChart
             // 
@@ -81,8 +83,6 @@
             this.cbbChart.FontSize = MetroFramework.MetroComboBoxSize.Small;
             this.cbbChart.FormattingEnabled = true;
             this.cbbChart.Name = "cbbChart";
-            this.cbbChart.UseCustomBackColor = true;
-            this.cbbChart.UseCustomForeColor = true;
             this.cbbChart.UseSelectable = true;
             this.cbbChart.UseStyleColors = true;
             this.cbbChart.SelectedIndexChanged += new System.EventHandler(this.cbbChart_SelectedIndexChanged);
@@ -92,8 +92,6 @@
             resources.ApplyResources(this.lblRegionChartUp, "lblRegionChartUp");
             this.lblRegionChartUp.FontSize = MetroFramework.MetroLabelSize.Small;
             this.lblRegionChartUp.Name = "lblRegionChartUp";
-            this.lblRegionChartUp.UseCustomBackColor = true;
-            this.lblRegionChartUp.UseCustomForeColor = true;
             this.lblRegionChartUp.UseStyleColors = true;
             // 
             // cbbRegion
@@ -115,8 +113,6 @@
             resources.ApplyResources(this.lblRegionRegion, "lblRegionRegion");
             this.lblRegionRegion.FontSize = MetroFramework.MetroLabelSize.Small;
             this.lblRegionRegion.Name = "lblRegionRegion";
-            this.lblRegionRegion.UseCustomBackColor = true;
-            this.lblRegionRegion.UseCustomForeColor = true;
             this.lblRegionRegion.UseStyleColors = true;
             // 
             // elementHost1

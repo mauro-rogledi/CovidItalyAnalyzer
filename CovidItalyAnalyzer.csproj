@@ -104,7 +104,9 @@
       <DependentUpon>mainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Library\CartesianChartCountyManager.cs" />
+    <Compile Include="Library\Crypting.cs" />
     <Compile Include="Library\DataReaderPeopleRegions.cs" />
+    <Compile Include="Library\GitManager.cs" />
     <Compile Include="Library\PieChartItalyManager.cs" />
     <Compile Include="Library\CartesianChartRegionManager.cs" />
     <Compile Include="Library\DataExtractorCounty.cs" />

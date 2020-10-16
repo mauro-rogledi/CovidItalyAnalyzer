@@ -68,7 +68,7 @@ namespace CovidItalyAnalyzer.Library
 
         internal static List<ReturnData> FillNewRegionCasesAtDate(DateTime dateFrom, DateTime dateTo, int top)
         {
-            return dateFrom == dateTo
+            return dateFrom.Date == dateTo.Date
                 ? DataReaderRegion
                     .ReadRegionsAtDate(dateFrom)
                     .Select((curr) => new ReturnData()

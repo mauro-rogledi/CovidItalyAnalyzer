@@ -18,7 +18,9 @@ namespace CovidItalyAnalyzer.Library
         private static List<RegionData> RegionDatas;
         private static List<ItalyRegion> italyRegions;
 
-        private static string folder;
+        private static string folder = string.Empty;
+
+        public static bool HasReadData { get => folder != string.Empty; }
 
         internal static void ReadData(string folderName)
         {
@@ -42,7 +44,7 @@ namespace CovidItalyAnalyzer.Library
         internal static IEnumerable<RegionData> ReadRegionsAtRangeDate(DateTime dateFrom, DateTime dateTo)
         {
             return DataReaderRegion.RegionDatas
-                 .Where(r => r.data.Date >= dateFrom && r.data.Date <= dateTo);
+                 .Where(r => r.data.Date >= dateFrom.Date && r.data.Date <= dateTo.Date);
         }
 
         internal static IOrderedEnumerable<ItalyRegion> ReadRegions()

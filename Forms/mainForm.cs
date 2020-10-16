@@ -40,6 +40,13 @@ namespace CovidItalyAnalyzer.Forms
 
         private void bntRefresh_Click(object sender, EventArgs e)
         {
+            if (SettingManager.FolderData == "")
+                return;
+
+            if (Directory.GetDirectories(SettingManager.FolderData).Count() == 0)
+                GitManager.GitClone();
+            else
+                GitManager.GitPull();
         }
     }
 
