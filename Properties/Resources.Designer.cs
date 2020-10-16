@@ -61,6 +61,24 @@ namespace CovidItalyAnalyzer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Case per inhabitants at date.
+        /// </summary>
+        internal static string CasePerinhabitants {
+            get {
+                return ResourceManager.GetString("CasePerinhabitants", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Daily cases.
+        /// </summary>
+        internal static string DailyCases {
+            get {
+                return ResourceManager.GetString("DailyCases", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap icons8_folder_24 {
@@ -117,6 +135,89 @@ namespace CovidItalyAnalyzer.Properties {
             get {
                 object obj = ResourceManager.GetObject("icons8_undo_24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total new cases at range data.
+        /// </summary>
+        internal static string NewCasesAtRangeDate {
+            get {
+                return ResourceManager.GetString("NewCasesAtRangeDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] PopolazioneProvince {
+            get {
+                object obj = ResourceManager.GetObject("PopolazioneProvince", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] PopolazioneRegioni {
+            get {
+                object obj = ResourceManager.GetObject("PopolazioneRegioni", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Relationship cases and swab.
+        /// </summary>
+        internal static string RelationshipCasesSwabs {
+            get {
+                return ResourceManager.GetString("RelationshipCasesSwabs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total cases at date.
+        /// </summary>
+        internal static string TotalCaseAtDate {
+            get {
+                return ResourceManager.GetString("TotalCaseAtDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total cases.
+        /// </summary>
+        internal static string TotalCases {
+            get {
+                return ResourceManager.GetString("TotalCases", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Weekly cases.
+        /// </summary>
+        internal static string WeeklyCases {
+            get {
+                return ResourceManager.GetString("WeeklyCases", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total weekly cases and swabs.
+        /// </summary>
+        internal static string WeeklyCasesSwabs {
+            get {
+                return ResourceManager.GetString("WeeklyCasesSwabs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total weekly swabs.
+        /// </summary>
+        internal static string WeeklySwabs {
+            get {
+                return ResourceManager.GetString("WeeklySwabs", resourceCulture);
             }
         }
     }

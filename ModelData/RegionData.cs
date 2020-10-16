@@ -21,11 +21,10 @@ namespace CovidItalyAnalyzer.ModelData
         public int nuovi_positivi { get; set; }
         public int dimessi_guariti { get; set; }
         public int deceduti { get; set; }
-        public int? casi_da_sospetto_diagnostico { get; set; }
-        public int? casi_da_screening { get; set; }
-        public int totale_casi { get; set; }
+        public float? casi_da_sospetto_diagnostico { get; set; }
+        public float? casi_da_screening { get; set; }
+        public float totale_casi { get; set; }
         public int tamponi { get; set; }
-        public int? casi_testati { get; set; }
-        public int casi_giornalieri { get; set; }
+        public float? casi_testati { get; set; }
     }
 }

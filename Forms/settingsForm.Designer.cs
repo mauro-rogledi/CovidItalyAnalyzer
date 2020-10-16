@@ -29,13 +29,77 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(settingsForm));
-            this.btnUndo = new MetroFramework.Controls.MetroLink();
-            this.btnSave = new MetroFramework.Controls.MetroLink();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.txtFolder = new MetroFramework.Controls.MetroTextBox();
-            this.btnFolder = new MetroFramework.Controls.MetroLink();
             this.fbdFolder = new System.Windows.Forms.FolderBrowserDialog();
+            this.btnFolder = new MetroFramework.Controls.MetroLink();
+            this.btnUndo = new MetroFramework.Controls.MetroLink();
+            this.btnSave = new MetroFramework.Controls.MetroLink();
             this.SuspendLayout();
+            // 
+            // metroLabel1
+            // 
+            resources.ApplyResources(this.metroLabel1, "metroLabel1");
+            this.metroLabel1.Name = "metroLabel1";
+            // 
+            // txtFolder
+            // 
+            resources.ApplyResources(this.txtFolder, "txtFolder");
+            // 
+            // 
+            // 
+            this.txtFolder.CustomButton.AccessibleDescription = resources.GetString("resource.AccessibleDescription");
+            this.txtFolder.CustomButton.AccessibleName = resources.GetString("resource.AccessibleName");
+            this.txtFolder.CustomButton.Anchor = ((System.Windows.Forms.AnchorStyles)(resources.GetObject("resource.Anchor")));
+            this.txtFolder.CustomButton.AutoSize = ((bool)(resources.GetObject("resource.AutoSize")));
+            this.txtFolder.CustomButton.AutoSizeMode = ((System.Windows.Forms.AutoSizeMode)(resources.GetObject("resource.AutoSizeMode")));
+            this.txtFolder.CustomButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("resource.BackgroundImage")));
+            this.txtFolder.CustomButton.BackgroundImageLayout = ((System.Windows.Forms.ImageLayout)(resources.GetObject("resource.BackgroundImageLayout")));
+            this.txtFolder.CustomButton.Dock = ((System.Windows.Forms.DockStyle)(resources.GetObject("resource.Dock")));
+            this.txtFolder.CustomButton.FlatStyle = ((System.Windows.Forms.FlatStyle)(resources.GetObject("resource.FlatStyle")));
+            this.txtFolder.CustomButton.Font = ((System.Drawing.Font)(resources.GetObject("resource.Font")));
+            this.txtFolder.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            this.txtFolder.CustomButton.ImageAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("resource.ImageAlign")));
+            this.txtFolder.CustomButton.ImageIndex = ((int)(resources.GetObject("resource.ImageIndex")));
+            this.txtFolder.CustomButton.ImageKey = resources.GetString("resource.ImageKey");
+            this.txtFolder.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode")));
+            this.txtFolder.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location")));
+            this.txtFolder.CustomButton.MaximumSize = ((System.Drawing.Size)(resources.GetObject("resource.MaximumSize")));
+            this.txtFolder.CustomButton.Name = "";
+            this.txtFolder.CustomButton.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("resource.RightToLeft")));
+            this.txtFolder.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size")));
+            this.txtFolder.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtFolder.CustomButton.TabIndex = ((int)(resources.GetObject("resource.TabIndex")));
+            this.txtFolder.CustomButton.TextAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("resource.TextAlign")));
+            this.txtFolder.CustomButton.TextImageRelation = ((System.Windows.Forms.TextImageRelation)(resources.GetObject("resource.TextImageRelation")));
+            this.txtFolder.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtFolder.CustomButton.UseSelectable = true;
+            this.txtFolder.CustomButton.Visible = ((bool)(resources.GetObject("resource.Visible")));
+            this.txtFolder.Lines = new string[0];
+            this.txtFolder.MaxLength = 32767;
+            this.txtFolder.Name = "txtFolder";
+            this.txtFolder.PasswordChar = '\0';
+            this.txtFolder.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtFolder.SelectedText = "";
+            this.txtFolder.SelectionLength = 0;
+            this.txtFolder.SelectionStart = 0;
+            this.txtFolder.ShortcutsEnabled = true;
+            this.txtFolder.UseSelectable = true;
+            this.txtFolder.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtFolder.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // fbdFolder
+            // 
+            resources.ApplyResources(this.fbdFolder, "fbdFolder");
+            // 
+            // btnFolder
+            // 
+            resources.ApplyResources(this.btnFolder, "btnFolder");
+            this.btnFolder.Image = global::CovidItalyAnalyzer.Properties.Resources.icons8_folder_24;
+            this.btnFolder.ImageSize = 24;
+            this.btnFolder.Name = "btnFolder";
+            this.btnFolder.UseSelectable = true;
+            this.btnFolder.Click += new System.EventHandler(this.btnFolder_Click);
             // 
             // btnUndo
             // 
@@ -56,48 +120,6 @@
             this.btnSave.UseSelectable = true;
             this.btnSave.UseStyleColors = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // metroLabel1
-            // 
-            resources.ApplyResources(this.metroLabel1, "metroLabel1");
-            this.metroLabel1.Name = "metroLabel1";
-            // 
-            // txtFolder
-            // 
-            resources.ApplyResources(this.txtFolder, "txtFolder");
-            // 
-            // 
-            // 
-            this.txtFolder.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            this.txtFolder.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location")));
-            this.txtFolder.CustomButton.Name = "";
-            this.txtFolder.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size")));
-            this.txtFolder.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtFolder.CustomButton.TabIndex = ((int)(resources.GetObject("resource.TabIndex")));
-            this.txtFolder.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtFolder.CustomButton.UseSelectable = true;
-            this.txtFolder.CustomButton.Visible = ((bool)(resources.GetObject("resource.Visible")));
-            this.txtFolder.Lines = new string[0];
-            this.txtFolder.MaxLength = 32767;
-            this.txtFolder.Name = "txtFolder";
-            this.txtFolder.PasswordChar = '\0';
-            this.txtFolder.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtFolder.SelectedText = "";
-            this.txtFolder.SelectionLength = 0;
-            this.txtFolder.SelectionStart = 0;
-            this.txtFolder.ShortcutsEnabled = true;
-            this.txtFolder.UseSelectable = true;
-            this.txtFolder.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtFolder.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // btnFolder
-            // 
-            resources.ApplyResources(this.btnFolder, "btnFolder");
-            this.btnFolder.Image = global::CovidItalyAnalyzer.Properties.Resources.icons8_folder_24;
-            this.btnFolder.ImageSize = 24;
-            this.btnFolder.Name = "btnFolder";
-            this.btnFolder.UseSelectable = true;
-            this.btnFolder.Click += new System.EventHandler(this.btnFolder_Click);
             // 
             // settingsForm
             // 
