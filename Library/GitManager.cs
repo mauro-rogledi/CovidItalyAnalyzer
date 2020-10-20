@@ -13,7 +13,7 @@ namespace CovidItalyAnalyzer.Library
     public static class GitManager
     {
 
-        public static void GitPull()
+        public static bool GitPull()
         {
             using (var repo = new Repository(SettingManager.FolderData))
             {
@@ -35,14 +35,16 @@ namespace CovidItalyAnalyzer.Library
                 // Pull
                 var result = Commands.Pull(repo, signature, options);
                 MessageBox.Show(result.Status.ToString());
+                return result.Status == MergeStatus.FastForward;
             }
         }
 
-        public static void GitClone()
+        public static bool GitClone()
         {
             var co = new CloneOptions();
             co.CredentialsProvider = (_url, _user, _cred) => new UsernamePasswordCredentials { Username = SettingManager.UserName, Password = SettingManager.Password };
             var result = Repository.Clone("https://github.com/pcm-dpc/COVID-19.git", SettingManager.FolderData, co);
+            return true;
         }
     }
 }

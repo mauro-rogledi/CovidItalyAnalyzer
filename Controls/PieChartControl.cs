@@ -34,10 +34,12 @@ namespace CovidItalyAnalyzer.Controls
                 new ComboData() { display="all", value=numRegion}
             }; ;
 
-            chartManager = new PieChartItalyManager(pieChart);
-            chartManager.FromDate = () => dttFrom.Value;
-            chartManager.ToDate = () => dttTo.Value;
-            chartManager.Top = () => cbbTop.SelectedItem as ComboData;
+            chartManager = new PieChartItalyManager(pieChart)
+            {
+                FromDate = () => dttFrom.Value,
+                ToDate = () => dttTo.Value,
+                Top = () => cbbTop.SelectedItem as ComboData
+            };
 
             cbbChart.Items.AddRange(chartManager.GetChartAvailable());
         }
@@ -56,6 +58,12 @@ namespace CovidItalyAnalyzer.Controls
 
             RefreshChart();
         }
+
+        internal void RefreshData()
+        {
+            RefreshChart();
+        }
+
         private void RefreshChart()
         {
             chartManager?.SetChart(cbbChart.Text);

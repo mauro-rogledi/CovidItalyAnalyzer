@@ -117,20 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="And" xml:space="preserve">
+    <value>al</value>
+  </data>
+  <data name="BetweenDate" xml:space="preserve">
+    <value>dal</value>
+  </data>
   <data name="CasePerinhabitants" xml:space="preserve">
-    <value>Casi per abitante nella data</value>
+    <value>Casi per 100.000 abitanti</value>
   </data>
   <data name="DailyCases" xml:space="preserve">
     <value>Casi giornalieri</value>
   </data>
-  <data name="NewCasesAtRangeDate" xml:space="preserve">
+  <data name="DailyCasesSwabs" xml:space="preserve">
+    <value>Rapporto giornaliero casi e tamponi</value>
+  </data>
+  <data name="DailySwabs" xml:space="preserve">
+    <value>Tamponi giornalieri</value>
+  </data>
+  <data name="NewCases" xml:space="preserve">
     <value>Nuovi casi nell'intervallo</value>
   </data>
   <data name="RelationshipCasesSwabs" xml:space="preserve">
     <value>Rapporto casi / tamponi</value>
-  </data>
-  <data name="TotalCaseAtDate" xml:space="preserve">
-    <value>Casi totali alla data</value>
   </data>
   <data name="TotalCases" xml:space="preserve">
     <value>Casi totali</value>

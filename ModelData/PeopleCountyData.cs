@@ -14,7 +14,7 @@ namespace CovidItalyAnalyzer.ModelData
         public string denominazione_provincia { get; set; }
         public string sigla_provincia { get; set; }
 
-        public int popolazione { get; set; }
+        public float popolazione { get; set; }
     }
 
     public class PeopleRegionData
@@ -22,6 +22,6 @@ namespace CovidItalyAnalyzer.ModelData
         public int codice_regione { get; set; }
         public string denominazione_regione { get; set; }
 
-        public int popolazione { get; set; }
+        public float popolazione { get; set; }
     }
 }

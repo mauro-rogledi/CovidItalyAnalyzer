@@ -52,6 +52,11 @@ namespace CovidItalyAnalyzer.Controls
             RefreshChart();
         }
 
+        internal void RefreshData()
+        {
+            RefreshChart();
+        }
+
         void RefreshChart()
         {
             var regionSelected = cbbRegion.SelectedItem as ComboData;

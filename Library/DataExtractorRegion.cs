@@ -1,9 +1,9 @@
-﻿using System;
+﻿using CovidItalyAnalyzer.ModelData;
+
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CovidItalyAnalyzer.Library
 {
@@ -16,39 +16,19 @@ namespace CovidItalyAnalyzer.Library
 
     public class DataExtractorRegion
     {
-        static CultureInfo myCI = CultureInfo.CurrentCulture;
-        static Calendar myCal = myCI.Calendar;
-        static CalendarWeekRule myCWR = myCI.DateTimeFormat.CalendarWeekRule;
-        static DayOfWeek myFirstDOW = myCI.DateTimeFormat.FirstDayOfWeek;
+        private static CultureInfo myCI = CultureInfo.CurrentCulture;
+        private static Calendar myCal = myCI.Calendar;
+        private static CalendarWeekRule myCWR = myCI.DateTimeFormat.CalendarWeekRule;
+        private static DayOfWeek myFirstDOW = myCI.DateTimeFormat.FirstDayOfWeek;
+
+        public static List<ReturnData> FillDailySwabs(int region)
+        {
+            return FillRegionDifferentsWithFunction(region, f => f.tamponi);
+        }
 
         public static List<ReturnData> FillDailyCases(int region)
         {
-            var list = DataReaderRegion.ReadRegionData(region)
-                .ToList();
-
-            return list
-                .Select((curr, i) => new ReturnData()
-                {
-                    data = curr.data,
-                    value = i > 0 ? curr.totale_casi - list[i - 1].totale_casi : curr.totale_casi
-                }
-                )
-                .ToList();
-        }
-
-        public static List<ReturnData> FillDailySwab(int region)
-        {
-            var list = DataReaderRegion.ReadRegionData(region)
-                .ToList();
-
-            return list
-                .Select((curr, i) => new ReturnData()
-                {
-                    data = curr.data,
-                    value = i > 0 ? curr.tamponi - list[i - 1].tamponi : curr.tamponi
-                }
-                )
-                .ToList();
+            return FillRegionWithFunction(region, p => p.nuovi_positivi);
         }
 
         internal static List<ReturnData> FillTotalRegionCasesAtDate(DateTime date, int top)
@@ -66,7 +46,7 @@ namespace CovidItalyAnalyzer.Library
                 .ToList();
         }
 
-        internal static List<ReturnData> FillNewRegionCasesAtDate(DateTime dateFrom, DateTime dateTo, int top)
+        internal static List<ReturnData> FillRangeData(DateTime dateFrom, DateTime dateTo, int top, Func<RegionData, float> func)
         {
             return dateFrom.Date == dateTo.Date
                 ? DataReaderRegion
@@ -74,7 +54,7 @@ namespace CovidItalyAnalyzer.Library
                     .Select((curr) => new ReturnData()
                     {
                         data = curr.data,
-                        value = curr.nuovi_positivi,
+                        value = func.Invoke(curr),
                         lbl = curr.denominazione_regione
                     })
                     .OrderByDescending(v => v.value)
@@ -82,11 +62,10 @@ namespace CovidItalyAnalyzer.Library
                     .ToList()
                 : DataReaderRegion
                     .ReadRegionsAtRangeDate(dateFrom, dateTo)
-                    .GroupBy(g => g.codice_regione)
                     .Select((curr) => new ReturnData()
                     {
                         data = curr.Max(r => r.data),
-                        value = curr.Sum(r => r.nuovi_positivi),
+                        value = curr.Sum(r => func.Invoke(r)),
                         lbl = curr.Max(r => r.denominazione_regione)
                     })
                     .OrderByDescending(v => v.value)
@@ -94,19 +73,31 @@ namespace CovidItalyAnalyzer.Library
                     .ToList();
         }
 
-        internal static List<ReturnData> FillNewRegionCasesPercAtDate(DateTime date, int top)
+        internal static List<ReturnData> FillRangeDataInhabitants(DateTime dateFrom, DateTime dateTo, int top, Func<ModelData.RegionData, float> func)
         {
-            return DataReaderRegion
-                .ReadRegionsAtDate(date)
-                .Select((curr) => new ReturnData()
-                {
-                    data = curr.data,
-                    value = (float)curr.nuovi_positivi * 1000000 / (float)DataReaderPeopleRegions.ReadPeopleByRegion(curr.codice_regione),
-                    lbl = curr.denominazione_regione
-                })
-                .OrderByDescending(v => v.value)
-                .Take(top)
-                .ToList();
+            return dateFrom.Date == dateTo.Date
+                ? DataReaderRegion
+                    .ReadRegionsAtDate(dateFrom)
+                    .Select((curr) => new ReturnData()
+                    {
+                        data = curr.data,
+                        value = func.Invoke(curr) * 100000 / DataReaderPeople.ReadPeopleByRegion(curr.codice_regione),
+                        lbl = curr.denominazione_regione
+                    })
+                    .OrderByDescending(v => v.value)
+                    .Take(top)
+                    .ToList()
+                : DataReaderRegion
+                    .ReadRegionsAtRangeDate(dateFrom, dateTo)
+                    .Select((curr) => new ReturnData()
+                    {
+                        data = curr.Max(r => r.data),
+                        value = curr.Sum(r => func.Invoke(r) * 100000 / DataReaderPeople.ReadPeopleByRegion(curr.First().codice_regione)),
+                        lbl = curr.Max(r => r.denominazione_regione)
+                    })
+                    .OrderByDescending(v => v.value)
+                    .Take(top)
+                    .ToList();
         }
 
         public static List<ReturnData> FillWeeklyCases(int region)
@@ -123,11 +114,9 @@ namespace CovidItalyAnalyzer.Library
                 .ToList();
         }
 
-
-
         public static List<ReturnData> FillWeeklySwab(int region)
         {
-            return FillDailySwab(region)
+            return FillDailySwabs(region)
                 .GroupBy(g => myCal.GetWeekOfYear(g.data, myCWR, myFirstDOW))
                 .Select((s) => new ReturnData
                 {
@@ -152,6 +141,21 @@ namespace CovidItalyAnalyzer.Library
             })
             .ToList();
         }
+
+        public static List<ReturnData> FillDailySwabCases(int region)
+        {
+            var cases = FillDailyCases(region);
+            var swab = FillDailySwabs(region);
+
+            return cases.Zip(swab, (c, s) => new ReturnData()
+            {
+                lbl = c.lbl,
+                data = c.data,
+                value = s.value != 0 ? c.value / s.value : 0F
+            })
+            .ToList();
+        }
+
         internal static List<ReturnData> FillTotalyCases(int region)
         {
             return DataReaderRegion.ReadRegionData(region)
@@ -166,5 +170,33 @@ namespace CovidItalyAnalyzer.Library
                 .ToList();
         }
 
+        private static List<ReturnData> FillRegionDifferentsWithFunction(int region, Func<RegionData, float> func)
+        {
+            List<RegionData> list = DataReaderRegion.ReadRegionData(region)
+                .ToList();
+
+            return list
+                .Select((curr, i) => new ReturnData()
+                {
+                    data = curr.data,
+                    value = i > 1 ? (func?.Invoke(curr) ?? 0F) - (func?.Invoke(list[i - 1]) ?? 0F) : func?.Invoke(curr) ?? 0F,
+                    lbl = curr.data.ToString("dd/MM/yy")
+                }
+                )
+                .ToList();
+        }
+
+        private static List<ReturnData> FillRegionWithFunction(int region, Func<RegionData, float> func)
+        {
+            return DataReaderRegion.ReadRegionData(region)
+                .Select((curr, i) => new ReturnData()
+                {
+                    data = curr.data,
+                    value = func?.Invoke(curr) ?? 0F,
+                    lbl = curr.data.ToString("dd/MM/yy")
+                }
+                )
+                .ToList();
+        }
     }
 }

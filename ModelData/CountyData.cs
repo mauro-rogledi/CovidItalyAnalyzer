@@ -15,6 +15,6 @@ namespace CovidItalyAnalyzer.ModelData
         public int codice_provincia { get; set; }
         public string denominazione_provincia { get; set; }
         public string sigla_provincia { get; set; }
-        public int totale_casi  { get; set; }
+        public float totale_casi  { get; set; }
     }
 }

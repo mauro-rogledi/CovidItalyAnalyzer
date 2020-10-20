@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -30,6 +31,12 @@ namespace CovidItalyAnalyzer.Forms
             }
 
             InitializeComponent();
+
+            var swab = DataExtractorRegion.FillDailySwabs(7);
+            var cases = DataExtractorRegion.FillDailyCases(7);
+
+            var result = cases.Zip(swab, (c, s) => new { caso = c.value, tamp = s.value, c.data });
+            dataGridView1.DataSource = result.ToList();
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
@@ -43,12 +50,26 @@ namespace CovidItalyAnalyzer.Forms
             if (SettingManager.FolderData == "")
                 return;
 
+            var hasToRefresh = false;
+
             if (Directory.GetDirectories(SettingManager.FolderData).Count() == 0)
-                GitManager.GitClone();
+                hasToRefresh = GitManager.GitClone();
             else
-                GitManager.GitPull();
+                hasToRefresh = GitManager.GitPull();
+
+            if (hasToRefresh)
+            {
+                DataReaderRegion.ReadData(SettingManager.FolderData);
+                DataReaderCounty.ReadData(SettingManager.FolderData);
+
+                pieControl1.RefreshData();
+                pieControl2.RefreshData();
+                pieControl3.RefreshData();
+                cartesianChartRegionControl1.RefreshData();
+                cartesianChartRegionControl2.RefreshData();
+                cartesianChartCountyControl1.RefreshData();
+                cartesianChartCountyControl2.RefreshData();
+            }
         }
     }
-
-
 }

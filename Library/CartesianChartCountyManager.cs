@@ -70,7 +70,7 @@ namespace CovidItalyAnalyzer.Library
                 Separator = new Separator
                 {
                     Step = 1,
-                    IsEnabled = false //disable it to make it invisible.
+                    IsEnabled = true //disable it to make it invisible.
                 }
             });
 
@@ -110,7 +110,7 @@ namespace CovidItalyAnalyzer.Library
                 Separator = new Separator
                 {
                     Step = 1,
-                    IsEnabled = false //disable it to make it invisible.
+                    IsEnabled = true //disable it to make it invisible.
                 }
             });
 
@@ -150,7 +150,7 @@ namespace CovidItalyAnalyzer.Library
                 Separator = new Separator
                 {
                     Step = 7,
-                    IsEnabled = false //disable it to make it invisible.
+                    IsEnabled = true //disable it to make it invisible.
                 }
             });
 

@@ -34,16 +34,30 @@ namespace CovidItalyAnalyzer.Controls
                 .Select(r => new ComboData() { value = r.codice_regione, display = r.denominazione_regione }).ToArray();
 
             cbbRegion.Items.AddRange(regions);
-            chartManager = new CartesianChartRegionManager(cartesianChart);
+            chartManager = new CartesianChartRegionManager(cartesianChart)
+            {
+                Region = () => cbbChart.SelectedItem as ComboData
+            };
+
             cbbChart.Items.AddRange(chartManager.GetChartAvailable());
         }
 
         private void cbbRegion_SelectedIndexChanged(object sender, EventArgs e)
         {
+            RefreshChart();
+        }
+
+        private void RefreshChart()
+        {
             var selected = cbbRegion.SelectedItem as ComboData;
             var chart = cbbChart.Text;
             if (selected != null && chart != "")
                 chartManager.SetChart(chart, selected.value, selected.display);
+        }
+
+        internal void RefreshData()
+        {
+            RefreshChart();
         }
     }
 }

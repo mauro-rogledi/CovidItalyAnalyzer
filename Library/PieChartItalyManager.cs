@@ -1,8 +1,11 @@
-﻿using LiveCharts;
+﻿using CovidItalyAnalyzer.ModelData;
+
+using LiveCharts;
 using LiveCharts.Wpf;
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -34,9 +37,8 @@ namespace CovidItalyAnalyzer.Library
             myCWR = myCI.DateTimeFormat.CalendarWeekRule;
             myFirstDOW = myCI.DateTimeFormat.FirstDayOfWeek;
 
-            ChartAvailable.Add(Properties.Resources.TotalCaseAtDate, () => FillChartWithTotalRegionCasesAtDate());
-            ChartAvailable.Add(Properties.Resources.NewCasesAtRangeDate, () => FillChartWithRegionNewCasesAtDate());
-            ChartAvailable.Add("Cases per inhabitants", () => FillChartWithRegionNewPercCasesAtDate());
+            ChartAvailable.Add(Properties.Resources.NewCases, () => FillChart(Properties.Resources.NewCases, p => p.nuovi_positivi));
+            ChartAvailable.Add(Properties.Resources.CasePerinhabitants, () => FillChartInhabitants(Properties.Resources.CasePerinhabitants, p => p.nuovi_positivi));
         }
 
         public string[] GetChartAvailable()
@@ -51,45 +53,19 @@ namespace CovidItalyAnalyzer.Library
                 ChartAvailable[chart]?.Invoke();
         }
 
-        internal string GetTitle(string text)
-        {
-            throw new NotImplementedException();
-        }
-
-        void FillChartWithTotalRegionCasesAtDate()
-        {
-            var date = FromDate?.Invoke() ?? DateTime.Today;
-            var top = Top?.Invoke()?.value ?? 5;
-            var data = DataExtractorRegion.FillTotalRegionCasesAtDate(date, top);
-
-            var series = new SeriesCollection();
-
-            var rand = new Random();
-
-            foreach (var region in data)
-                series.Add(
-                    new PieSeries()
-                    {
-                        Title = region.lbl,
-                        Values = new ChartValues<float> { region.value }
-                    });
-
-            this.chart.Series = series;
-            this.chart.LegendLocation = LegendLocation.Right;
-        }
-
-        void FillChartWithRegionNewCasesAtDate()
+        void FillChart(string title, Func<ModelData.RegionData, float> dataToExtract)
         {
             var dateFrom = FromDate?.Invoke() ?? DateTime.Today;
             var dateTo = ToDate?.Invoke() ?? DateTime.Today;
             var top = Top?.Invoke()?.value ?? 5;
-            var data = DataExtractorRegion.FillNewRegionCasesAtDate(dateFrom, dateTo, top);
+            var data = DataExtractorRegion.FillRangeData(dateFrom, dateTo, top, dataToExtract);
+
             Title = dateFrom.Date == dateTo.Date
-                ? $"New Cases at date {dateFrom.Date.ToShortDateString()}"
-                : $"New Cases between date {dateFrom.Date.ToString("dd/MM/yy")} and {dateTo.Date.ToString("dd/MM/yy")}";
+                    ? $"{title} {dateFrom.Date.ToShortDateString()}"
+                    : $"{title} {Properties.Resources.BetweenDate} {dateFrom.Date.ToString("dd/MM/yy")} {{Properties.Resources.And}} {dateTo.Date.ToString("dd/MM/yy")}";
 
             Func<ChartPoint, string> labelPoint = chartPoint =>
-                string.Format("{0}", chartPoint.Y.ToString("0"));
+                string.Format("{0}", chartPoint.Y.ToString("N0"));
 
             var series = new SeriesCollection();
 
@@ -107,17 +83,19 @@ namespace CovidItalyAnalyzer.Library
             this.chart.LegendLocation = LegendLocation.Right;
         }
 
-        void FillChartWithRegionNewPercCasesAtDate()
+        private void FillChartInhabitants(string title, Func<ModelData.RegionData, float> dataToExtract)
         {
-            Title = "Cases per million inhabitants";
-
-            var date = FromDate?.Invoke() ?? DateTime.Today;
+            var dateFrom = FromDate?.Invoke() ?? DateTime.Today;
+            var dateTo = ToDate?.Invoke() ?? DateTime.Today;
             var top = Top?.Invoke()?.value ?? 5;
-            var data = DataExtractorRegion.FillNewRegionCasesPercAtDate(date, top);
+            var data = DataExtractorRegion.FillRangeDataInhabitants(dateFrom, dateTo, top, dataToExtract);
 
+            Title = dateFrom.Date == dateTo.Date
+                    ? $"{title} {dateFrom.Date.ToShortDateString()}"
+                    : $"{title} {Properties.Resources.BetweenDate} {dateFrom.Date.ToString("dd/MM/yy")} {Properties.Resources.And} {dateTo.Date.ToString("dd/MM/yy")}";
 
             Func<ChartPoint, string> labelPoint = chartPoint =>
-                string.Format("{0}", chartPoint.Y.ToString("0.00"));
+                string.Format("{0}", chartPoint.Y.ToString("#,##0.##"));
 
             var series = new SeriesCollection();
 

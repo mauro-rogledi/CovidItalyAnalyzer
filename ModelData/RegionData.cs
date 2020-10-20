@@ -12,19 +12,19 @@ namespace CovidItalyAnalyzer.ModelData
         public string stato { get; set; }
         public int codice_regione { get; set; }
         public string denominazione_regione { get; set; }
-        public int ricoverati_con_sintomi { get; set; }
-        public int terapia_intensiva { get; set; }
-        public int totale_ospedalizzati { get; set; }
-        public int isolamento_domiciliare { get; set; }
-        public int totale_positivi { get; set; }
-        public int variazione_totale_positivi { get; set; }
-        public int nuovi_positivi { get; set; }
-        public int dimessi_guariti { get; set; }
-        public int deceduti { get; set; }
+        public float ricoverati_con_sintomi { get; set; }
+        public float terapia_intensiva { get; set; }
+        public float totale_ospedalizzati { get; set; }
+        public float isolamento_domiciliare { get; set; }
+        public float totale_positivi { get; set; }
+        public float variazione_totale_positivi { get; set; }
+        public float nuovi_positivi { get; set; }
+        public float dimessi_guariti { get; set; }
+        public float deceduti { get; set; }
         public float? casi_da_sospetto_diagnostico { get; set; }
         public float? casi_da_screening { get; set; }
         public float totale_casi { get; set; }
-        public int tamponi { get; set; }
+        public float tamponi { get; set; }
         public float? casi_testati { get; set; }
     }
 }
