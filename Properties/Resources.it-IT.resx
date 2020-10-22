@@ -132,14 +132,23 @@
   <data name="DailyCasesSwabs" xml:space="preserve">
     <value>Rapporto giornaliero casi e tamponi</value>
   </data>
+  <data name="DailyDeads" xml:space="preserve">
+    <value>Deceduti giornalieri</value>
+  </data>
   <data name="DailySwabs" xml:space="preserve">
     <value>Tamponi giornalieri</value>
   </data>
   <data name="NewCases" xml:space="preserve">
+    <value>Nuovi casi</value>
+  </data>
+  <data name="NewCasesInRange" xml:space="preserve">
     <value>Nuovi casi nell'intervallo</value>
   </data>
   <data name="RelationshipCasesSwabs" xml:space="preserve">
     <value>Rapporto casi / tamponi</value>
+  </data>
+  <data name="Swabs" xml:space="preserve">
+    <value>Tamponi</value>
   </data>
   <data name="TotalCases" xml:space="preserve">
     <value>Casi totali</value>

@@ -41,11 +41,10 @@ namespace CovidItalyAnalyzer.Library
             return DataReaderRegion.RegionDatas
                  .Where(r => r.data.Date == date.Date);
         }
-        internal static IEnumerable<IGrouping<int, RegionData>> ReadRegionsAtRangeDate(DateTime dateFrom, DateTime dateTo)
+        internal static IEnumerable<RegionData> ReadRegionsAtRangeDate(DateTime dateFrom, DateTime dateTo)
         {
             return DataReaderRegion.RegionDatas
-                 .Where(r => r.data.Date >= dateFrom.Date && r.data.Date <= dateTo.Date)
-                 .GroupBy(g => g.codice_regione);
+                 .Where(r => r.data.Date >= dateFrom.Date && r.data.Date <= dateTo.Date);
         }
 
         internal static IOrderedEnumerable<ItalyRegion> ReadRegions()

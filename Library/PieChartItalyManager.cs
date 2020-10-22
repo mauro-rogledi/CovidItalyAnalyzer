@@ -37,7 +37,7 @@ namespace CovidItalyAnalyzer.Library
             myCWR = myCI.DateTimeFormat.CalendarWeekRule;
             myFirstDOW = myCI.DateTimeFormat.FirstDayOfWeek;
 
-            ChartAvailable.Add(Properties.Resources.NewCases, () => FillChart(Properties.Resources.NewCases, p => p.nuovi_positivi));
+            ChartAvailable.Add(Properties.Resources.NewCasesInRange, () => FillChart(Properties.Resources.NewCasesInRange, p => p.nuovi_positivi));
             ChartAvailable.Add(Properties.Resources.CasePerinhabitants, () => FillChartInhabitants(Properties.Resources.CasePerinhabitants, p => p.nuovi_positivi));
         }
 

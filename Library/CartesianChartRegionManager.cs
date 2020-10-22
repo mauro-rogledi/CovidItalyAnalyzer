@@ -35,11 +35,12 @@ namespace CovidItalyAnalyzer.Library
             ChartAvailable.Add(Properties.Resources.WeeklyCasesSwabs, (int r, string s) => FillChartWithWeeklySwabCases(r, s));
             ChartAvailable.Add(Properties.Resources.TotalCases, (int r, string s) => FillChartWitTotalCases(r, s));
             ChartAvailable.Add(Properties.Resources.DailyCasesSwabs, (int r, string s) => FillChartWithDailySwabCases(r, s));
+            ChartAvailable.Add(Properties.Resources.DailyDeads, (int r, string s) => FillChartWitDailyDeads(r, s));
         }
 
-        private void FillChartWitDailySwabs(int region, string regionName)
+        private void FillChartWitDailyDeads(int region, string regionName)
         {
-            var data = DataExtractorRegion.FillDailySwabs(region);
+            var data = DataExtractorRegion.FillDailyDeads(region);
 
             this.chart.Series.Clear();
             this.chart.AxisX.Clear();
@@ -49,7 +50,7 @@ namespace CovidItalyAnalyzer.Library
             {
                 new LineSeries
                 {
-                    Title = $"Totale tamponi giornaliero {regionName}",
+                    Title = $"{Properties.Resources.DailySwabs} {regionName}",
                     Values = new ChartValues<float>(data.Select(s => s.value)),
                     PointGeometry = DefaultGeometries.None,
                     DataLabels = false,
@@ -70,7 +71,47 @@ namespace CovidItalyAnalyzer.Library
 
             this.chart.AxisY.Add(new Axis
             {
-                Title = "Tamponi",
+                Title = Properties.Resources.Swabs,
+                LabelFormatter = value => value.ToString("N0")
+            });
+
+            this.chart.LegendLocation = LegendLocation.Top;
+        }
+
+        private void FillChartWitDailySwabs(int region, string regionName)
+        {
+            var data = DataExtractorRegion.FillDailySwabs(region);
+
+            this.chart.Series.Clear();
+            this.chart.AxisX.Clear();
+            this.chart.AxisY.Clear();
+
+            this.chart.Series = new SeriesCollection
+            {
+                new LineSeries
+                {
+                    Title = $"{Properties.Resources.DailySwabs} {regionName}",
+                    Values = new ChartValues<float>(data.Select(s => s.value)),
+                    PointGeometry = DefaultGeometries.None,
+                    DataLabels = false,
+                    LabelPoint = point => point.Y.ToString("N0")
+                }
+            };
+
+            this.chart.AxisX.Add(new Axis
+            {
+                Labels = data.Select(s => s.lbl).ToList(),
+                LabelsRotation = 15,
+                Separator = new Separator
+                {
+                    Step = 7,
+                    IsEnabled = true //disable it to make it invisible.
+                }
+            });
+
+            this.chart.AxisY.Add(new Axis
+            {
+                Title = Properties.Resources.Swabs,
                 LabelFormatter = value => value.ToString("N0")
             });
 
@@ -101,7 +142,7 @@ namespace CovidItalyAnalyzer.Library
             {
                 new LineSeries
                 {
-                    Title = $"Totale infetti giornaliero {regionName}",
+                    Title = $"{Properties.Resources.DailyCases} {regionName}",
                     Values = new ChartValues<float>(data.Select(s => s.value)),
                     PointGeometry = DefaultGeometries.None,
                     DataLabels = false,
@@ -122,7 +163,7 @@ namespace CovidItalyAnalyzer.Library
 
             this.chart.AxisY.Add(new Axis
             {
-                Title = "Infetti",
+                Title = Properties.Resources.NewCases,
                 LabelFormatter = value => value.ToString("N0")
             });
 
@@ -141,7 +182,7 @@ namespace CovidItalyAnalyzer.Library
             {
                 new LineSeries
                 {
-                    Title = $"Totale infetti giornaliero {regionName}",
+                    Title = $"{Properties.Resources.DailyCases} {regionName}",
                     Values = new ChartValues<float>(data.Select(s => s.value)),
                     PointGeometry = DefaultGeometries.None,
                     DataLabels = false,
@@ -162,7 +203,7 @@ namespace CovidItalyAnalyzer.Library
 
             this.chart.AxisY.Add(new Axis
             {
-                Title = "Infetti",
+                Title = Properties.Resources.NewCases,
                 LabelFormatter = value => value.ToString("N0"),
             });
 
@@ -242,7 +283,7 @@ namespace CovidItalyAnalyzer.Library
 
             this.chart.AxisY.Add(new Axis
             {
-                Title = "Tamponi",
+                Title = Properties.Resources.Swabs,
                 LabelFormatter = value => value.ToString("N0")
             });
 
@@ -292,13 +333,13 @@ namespace CovidItalyAnalyzer.Library
 
             this.chart.AxisY.Add(new Axis
             {
-                Title = "Nuovi Infetti",
+                Title = Properties.Resources.NewCases,
                 LabelFormatter = value => value.ToString("N0")
             });
 
             this.chart.AxisY.Add(new Axis
             {
-                Title = "Rapporto Infetti/Tamponi",
+                Title = Properties.Resources.RelationshipCasesSwabs,
                 LabelFormatter = value => value.ToString("P"),
                 Position = AxisPosition.RightTop
             });
@@ -323,7 +364,7 @@ namespace CovidItalyAnalyzer.Library
                     Values = new ChartValues<float>(cases.Select(s => s.value)),
                     PointGeometry = DefaultGeometries.None,
                     DataLabels = true,
-                    LabelPoint = point => point.Y.ToString("N0"),
+                    //LabelPoint = point => point.Y.ToString("N0"),
                     ScalesYAt = 0
                 },
                 new LineSeries
@@ -331,7 +372,7 @@ namespace CovidItalyAnalyzer.Library
                     Title = Properties.Resources.RelationshipCasesSwabs,
                     Values = new ChartValues<float>(swab.Select(s => s.value)),
                     PointGeometry = DefaultGeometries.None,
-                    DataLabels = true,
+                    DataLabels = false,
                     ScalesYAt = 1
                 }
             };
@@ -342,20 +383,20 @@ namespace CovidItalyAnalyzer.Library
                 LabelsRotation = 15,
                 Separator = new Separator
                 {
-                    Step = 1,
+                    Step = 7,
                     IsEnabled = true //disable it to make it invisible.
                 }
             });
 
             this.chart.AxisY.Add(new Axis
             {
-                Title = "Nuovi Infetti",
+                Title = Properties.Resources.NewCases,
                 LabelFormatter = value => value.ToString("N0")
             });
 
             this.chart.AxisY.Add(new Axis
             {
-                Title = "Rapporto Infetti/Tamponi",
+                Title = Properties.Resources.RelationshipCasesSwabs,
                 LabelFormatter = value => value.ToString("P"),
                 Position = AxisPosition.RightTop
             });

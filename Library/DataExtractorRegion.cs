@@ -21,6 +21,11 @@ namespace CovidItalyAnalyzer.Library
         private static CalendarWeekRule myCWR = myCI.DateTimeFormat.CalendarWeekRule;
         private static DayOfWeek myFirstDOW = myCI.DateTimeFormat.FirstDayOfWeek;
 
+        public static List<ReturnData> FillDailyDeads(int region)
+        {
+            return FillRegionDifferentsWithFunction(region, f => f.deceduti);
+        }
+
         public static List<ReturnData> FillDailySwabs(int region)
         {
             return FillRegionDifferentsWithFunction(region, f => f.tamponi);
@@ -62,6 +67,7 @@ namespace CovidItalyAnalyzer.Library
                     .ToList()
                 : DataReaderRegion
                     .ReadRegionsAtRangeDate(dateFrom, dateTo)
+                    .GroupBy(g => g.codice_regione)
                     .Select((curr) => new ReturnData()
                     {
                         data = curr.Max(r => r.data),
@@ -72,6 +78,21 @@ namespace CovidItalyAnalyzer.Library
                     .Take(top)
                     .ToList();
         }
+
+        internal static Dictionary<int, List<ReturnData>> FillRangeDataDiff(DateTime dateFrom, DateTime dateTo, int top, Func<RegionData, float> func)
+        {
+            var list = dateFrom.Date == dateTo.Date
+                ? DataReaderRegion
+                    .ReadRegionsAtDate(dateFrom)
+                    .ToList()
+                : DataReaderRegion
+                    .ReadRegionsAtRangeDate(dateFrom, dateTo)
+                    .ToList();
+
+            return null;
+            //return list.Aggregate(new Dictionary<List<int>, ReturnData>(), (acc, v) => { acc.Add(v.codice_regione, new ReturnData() { data = v.data, value = func.Invoke(v), lbl = v.data.ToString("dd/MM/yy") });  return acc; });
+        }
+
 
         internal static List<ReturnData> FillRangeDataInhabitants(DateTime dateFrom, DateTime dateTo, int top, Func<ModelData.RegionData, float> func)
         {
@@ -89,6 +110,7 @@ namespace CovidItalyAnalyzer.Library
                     .ToList()
                 : DataReaderRegion
                     .ReadRegionsAtRangeDate(dateFrom, dateTo)
+                    .GroupBy(g => g.codice_regione)
                     .Select((curr) => new ReturnData()
                     {
                         data = curr.Max(r => r.data),

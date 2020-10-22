@@ -1,21 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-using CovidItalyAnalyzer.Library;
-using CovidItalyAnalyzer.ModelData;
+﻿using CovidItalyAnalyzer.Library;
 
 using MetroFramework.Forms;
 
-using Newtonsoft.Json;
+using System;
+using System.IO;
+using System.Linq;
 
 namespace CovidItalyAnalyzer.Forms
 {
@@ -32,11 +21,11 @@ namespace CovidItalyAnalyzer.Forms
 
             InitializeComponent();
 
-            var swab = DataExtractorRegion.FillDailySwabs(7);
-            var cases = DataExtractorRegion.FillDailyCases(7);
+            var swab = DataExtractorRegion.FillRangeDataDiff(DateTime.Today.AddDays(-1), DateTime.Today, 5, p => p.deceduti);
+            //var cases = DataExtractorRegion.FillDailyCases(7);
 
-            var result = cases.Zip(swab, (c, s) => new { caso = c.value, tamp = s.value, c.data });
-            dataGridView1.DataSource = result.ToList();
+            //var result = cases.Zip(swab, (c, s) => new { caso = c.value, tamp = s.value, c.data });
+            //dataGridView1.DataSource = result.ToList();
         }
 
         private void btnSettings_Click(object sender, EventArgs e)

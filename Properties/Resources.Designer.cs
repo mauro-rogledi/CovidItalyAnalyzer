@@ -106,6 +106,15 @@ namespace CovidItalyAnalyzer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Daily deads.
+        /// </summary>
+        internal static string DailyDeads {
+            get {
+                return ResourceManager.GetString("DailyDeads", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Daily swabs.
         /// </summary>
         internal static string DailySwabs {
@@ -175,11 +184,20 @@ namespace CovidItalyAnalyzer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Total new cases at range data.
+        ///   Looks up a localized string similar to New cases.
         /// </summary>
         internal static string NewCases {
             get {
                 return ResourceManager.GetString("NewCases", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total new cases at range data.
+        /// </summary>
+        internal static string NewCasesInRange {
+            get {
+                return ResourceManager.GetString("NewCasesInRange", resourceCulture);
             }
         }
         
@@ -209,6 +227,15 @@ namespace CovidItalyAnalyzer.Properties {
         internal static string RelationshipCasesSwabs {
             get {
                 return ResourceManager.GetString("RelationshipCasesSwabs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Swabs.
+        /// </summary>
+        internal static string Swabs {
+            get {
+                return ResourceManager.GetString("Swabs", resourceCulture);
             }
         }
         
