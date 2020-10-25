@@ -97,6 +97,12 @@
     <Compile Include="Controls\PieChartControl.Designer.cs">
       <DependentUpon>PieChartControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\RegionDataControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\RegionDataControl.Designer.cs">
+      <DependentUpon>RegionDataControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\mainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,6 +149,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\PieChartControl.resx">
       <DependentUpon>PieChartControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\RegionDataControl.resx">
+      <DependentUpon>RegionDataControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\mainForm.it-IT.resx">
       <DependentUpon>mainForm.cs</DependentUpon>

@@ -121,8 +121,8 @@
     <value>elementHost1</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="lblRegionRegion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 15</value>
+  <data name="cbbRegion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 25</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="metroPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -131,14 +131,14 @@
   <data name="&gt;&gt;lblRegionChartUp.Parent" xml:space="preserve">
     <value>metroPanel1</value>
   </data>
-  <data name="lblRegionChartUp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 15</value>
+  <data name="&gt;&gt;lblRegionChartUp.Name" xml:space="preserve">
+    <value>lblRegionChartUp</value>
   </data>
-  <data name="&gt;&gt;metroPanel1.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroPanel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  <data name="&gt;&gt;metroPanel1.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="&gt;&gt;lblRegionRegion.Parent" xml:space="preserve">
-    <value>metroPanel1</value>
+  <data name="lblRegionRegion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 15</value>
   </data>
   <data name="cbbChart.Location" type="System.Drawing.Point, System.Drawing">
     <value>269, 5</value>
@@ -146,14 +146,11 @@
   <data name="&gt;&gt;cbbRegion.Name" xml:space="preserve">
     <value>cbbRegion</value>
   </data>
-  <data name="&gt;&gt;metroPanel1.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;lblRegionRegion.Parent" xml:space="preserve">
+    <value>metroPanel1</value>
   </data>
   <data name="lblRegionChartUp.Location" type="System.Drawing.Point, System.Drawing">
     <value>224, 11</value>
-  </data>
-  <data name="lblRegionRegion.Text" xml:space="preserve">
-    <value>Select Region</value>
   </data>
   <data name="metroPanel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -173,21 +170,21 @@
   <data name="metroPanel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>971, 36</value>
   </data>
-  <data name="lblRegionRegion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 11</value>
-  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="lblRegionRegion.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="lblRegionChartUp.Text" xml:space="preserve">
-    <value>Chart</value>
+  <data name="&gt;&gt;cbbRegion.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="&gt;&gt;cbbRegion.Parent" xml:space="preserve">
     <value>metroPanel1</value>
   </data>
   <data name="cbbChart.Size" type="System.Drawing.Size, System.Drawing">
     <value>184, 25</value>
+  </data>
+  <data name="&gt;&gt;metroPanel1.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroPanel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
   </data>
   <data name="elementHost1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 36</value>
@@ -201,8 +198,8 @@
   <data name="lblRegionChartUp.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;elementHost1.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;lblRegionRegion.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
   </data>
   <data name="cbbChart.ItemHeight" type="System.Int32, mscorlib">
     <value>19</value>
@@ -213,6 +210,9 @@
   <data name="&gt;&gt;metroPanel1.Name" xml:space="preserve">
     <value>metroPanel1</value>
   </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>971, 470</value>
+  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>CartesianChartRegionControl</value>
   </data>
@@ -222,8 +222,8 @@
   <data name="metroPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;cbbRegion.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroComboBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  <data name="&gt;&gt;lblRegionRegion.Name" xml:space="preserve">
+    <value>lblRegionRegion</value>
   </data>
   <data name="elementHost1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -240,20 +240,20 @@
   <data name="cbbRegion.ItemHeight" type="System.Int32, mscorlib">
     <value>19</value>
   </data>
-  <data name="cbbRegion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>141, 25</value>
+  <data name="lblRegionChartUp.Text" xml:space="preserve">
+    <value>Chart</value>
   </data>
-  <data name="cbbChart.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+  <data name="&gt;&gt;cbbRegion.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroComboBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
   </data>
   <data name="cbbRegion.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
-  <data name="&gt;&gt;lblRegionRegion.Name" xml:space="preserve">
-    <value>lblRegionRegion</value>
+  <data name="&gt;&gt;elementHost1.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
-  <data name="&gt;&gt;lblRegionChartUp.Name" xml:space="preserve">
-    <value>lblRegionChartUp</value>
+  <data name="lblRegionRegion.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 11</value>
   </data>
   <data name="&gt;&gt;elementHost1.Type" xml:space="preserve">
     <value>System.Windows.Forms.Integration.ElementHost, WindowsFormsIntegration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</value>
@@ -276,22 +276,19 @@
   <data name="&gt;&gt;metroPanel1.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;cbbRegion.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="lblRegionRegion.Text" xml:space="preserve">
+    <value>Select Region</value>
   </data>
-  <data name="&gt;&gt;lblRegionRegion.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  <data name="lblRegionChartUp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 15</value>
   </data>
-  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>971, 470</value>
+  <data name="cbbChart.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
   </data>
   <data name="&gt;&gt;elementHost1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>it-IT</value>
   </metadata>
 </root>

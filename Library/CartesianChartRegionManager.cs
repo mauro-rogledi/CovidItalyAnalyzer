@@ -1,4 +1,5 @@
 ﻿using LiveCharts;
+using LiveCharts.Definitions.Series;
 using LiveCharts.Wpf;
 
 using System;
@@ -36,86 +37,8 @@ namespace CovidItalyAnalyzer.Library
             ChartAvailable.Add(Properties.Resources.TotalCases, (int r, string s) => FillChartWitTotalCases(r, s));
             ChartAvailable.Add(Properties.Resources.DailyCasesSwabs, (int r, string s) => FillChartWithDailySwabCases(r, s));
             ChartAvailable.Add(Properties.Resources.DailyDeads, (int r, string s) => FillChartWitDailyDeads(r, s));
-        }
-
-        private void FillChartWitDailyDeads(int region, string regionName)
-        {
-            var data = DataExtractorRegion.FillDailyDeads(region);
-
-            this.chart.Series.Clear();
-            this.chart.AxisX.Clear();
-            this.chart.AxisY.Clear();
-
-            this.chart.Series = new SeriesCollection
-            {
-                new LineSeries
-                {
-                    Title = $"{Properties.Resources.DailySwabs} {regionName}",
-                    Values = new ChartValues<float>(data.Select(s => s.value)),
-                    PointGeometry = DefaultGeometries.None,
-                    DataLabels = false,
-                    LabelPoint = point => point.Y.ToString("N0")
-                }
-            };
-
-            this.chart.AxisX.Add(new Axis
-            {
-                Labels = data.Select(s => s.lbl).ToList(),
-                LabelsRotation = 15,
-                Separator = new Separator
-                {
-                    Step = 7,
-                    IsEnabled = true //disable it to make it invisible.
-                }
-            });
-
-            this.chart.AxisY.Add(new Axis
-            {
-                Title = Properties.Resources.Swabs,
-                LabelFormatter = value => value.ToString("N0")
-            });
-
-            this.chart.LegendLocation = LegendLocation.Top;
-        }
-
-        private void FillChartWitDailySwabs(int region, string regionName)
-        {
-            var data = DataExtractorRegion.FillDailySwabs(region);
-
-            this.chart.Series.Clear();
-            this.chart.AxisX.Clear();
-            this.chart.AxisY.Clear();
-
-            this.chart.Series = new SeriesCollection
-            {
-                new LineSeries
-                {
-                    Title = $"{Properties.Resources.DailySwabs} {regionName}",
-                    Values = new ChartValues<float>(data.Select(s => s.value)),
-                    PointGeometry = DefaultGeometries.None,
-                    DataLabels = false,
-                    LabelPoint = point => point.Y.ToString("N0")
-                }
-            };
-
-            this.chart.AxisX.Add(new Axis
-            {
-                Labels = data.Select(s => s.lbl).ToList(),
-                LabelsRotation = 15,
-                Separator = new Separator
-                {
-                    Step = 7,
-                    IsEnabled = true //disable it to make it invisible.
-                }
-            });
-
-            this.chart.AxisY.Add(new Axis
-            {
-                Title = Properties.Resources.Swabs,
-                LabelFormatter = value => value.ToString("N0")
-            });
-
-            this.chart.LegendLocation = LegendLocation.Top;
+            ChartAvailable.Add(Properties.Resources.IntensiveCare, (int r, string s) => FillChartWitIntensiveCare(r, s));
+            
         }
 
         public string[] GetChartAvailable()
@@ -125,169 +48,44 @@ namespace CovidItalyAnalyzer.Library
                 .ToArray();
         }
 
-        internal void SetChart(string chart, int value, string display)
+        public void SetChart(string chart, int value, string display)
         {
             ChartAvailable[chart].Invoke(value, display);
         }
 
+        private void FillChartWitIntensiveCare(int region, string regionName)
+        {
+            FillChartWithLinearSeries(region, regionName, Properties.Resources.IntensiveCare, Properties.Resources.Deads, DataExtractorRegion.FillIntensiveCare);
+        }
+
+        private void FillChartWitDailyDeads(int region, string regionName)
+        {
+            FillChartWithLinearSeries(region, regionName, Properties.Resources.DailyDeads, Properties.Resources.Deads, DataExtractorRegion.FillDailyDeads);
+        }
+
+        private void FillChartWitDailySwabs(int region, string regionName)
+        {
+            FillChartWithLinearSeries(region, regionName, Properties.Resources.DailySwabs, Properties.Resources.Swabs, DataExtractorRegion.FillDailySwabs);
+        }
+
         public void FillChartWitNewPositives(int region, string regionName)
         {
-            var data = DataExtractorRegion.FillDailyCases(region);
-
-            this.chart.Series.Clear();
-            this.chart.AxisX.Clear();
-            this.chart.AxisY.Clear();
-
-            this.chart.Series = new SeriesCollection
-            {
-                new LineSeries
-                {
-                    Title = $"{Properties.Resources.DailyCases} {regionName}",
-                    Values = new ChartValues<float>(data.Select(s => s.value)),
-                    PointGeometry = DefaultGeometries.None,
-                    DataLabels = false,
-                    LabelPoint = point => point.Y.ToString("N0")
-                }
-            };
-
-            this.chart.AxisX.Add(new Axis
-            {
-                Labels = data.Select(s => s.lbl).ToList(),
-                LabelsRotation = 15,
-                Separator = new Separator
-                {
-                    Step = 7,
-                    IsEnabled = true //disable it to make it invisible.
-                }
-            });
-
-            this.chart.AxisY.Add(new Axis
-            {
-                Title = Properties.Resources.NewCases,
-                LabelFormatter = value => value.ToString("N0")
-            });
-
-            this.chart.LegendLocation = LegendLocation.Top;
+            FillChartWithLinearSeries(region, regionName, Properties.Resources.DailyCases, Properties.Resources.Cases, DataExtractorRegion.FillDailyCases);
         }
 
         public void FillChartWitTotalCases(int region, string regionName)
         {
-            var data = DataExtractorRegion.FillTotalyCases(region);
-
-            this.chart.Series.Clear();
-            this.chart.AxisX.Clear();
-            this.chart.AxisY.Clear();
-
-            this.chart.Series = new SeriesCollection
-            {
-                new LineSeries
-                {
-                    Title = $"{Properties.Resources.DailyCases} {regionName}",
-                    Values = new ChartValues<float>(data.Select(s => s.value)),
-                    PointGeometry = DefaultGeometries.None,
-                    DataLabels = false,
-                    LabelPoint = point => point.Y.ToString("N0")
-                }
-            };
-
-            this.chart.AxisX.Add(new Axis
-            {
-                Labels = data.Select(s => s.lbl).ToList(),
-                LabelsRotation = 15,
-                Separator = new Separator
-                {
-                    Step = 7,
-                    IsEnabled = true
-                }
-            });
-
-            this.chart.AxisY.Add(new Axis
-            {
-                Title = Properties.Resources.NewCases,
-                LabelFormatter = value => value.ToString("N0"),
-            });
-
-            this.chart.LegendLocation = LegendLocation.Top;
+            FillChartWithLinearSeries(region, regionName, Properties.Resources.DailyCases, Properties.Resources.Cases, DataExtractorRegion.FillTotalyCases);
         }
 
         public void FillChartWithWeeklyCases(int region, string regionName)
         {
-            var data = DataExtractorRegion.FillWeeklyCases(region);
-
-            this.chart.Series.Clear();
-            this.chart.AxisX.Clear();
-            this.chart.AxisY.Clear();
-
-            this.chart.Series = new SeriesCollection
-            {
-                new ColumnSeries
-                {
-                    Title = $"{Properties.Resources.WeeklyCases} {regionName}",
-                    Values = new ChartValues<float>(data.Select(s => s.value)),
-                    PointGeometry = DefaultGeometries.None,
-                    DataLabels = true,
-                    LabelPoint = point => point.Y.ToString("N0")
-                }
-            };
-
-            this.chart.AxisX.Add(new Axis
-            {
-                Labels = data.Select(s => s.lbl).ToList(),
-                LabelsRotation = 15,
-                Separator = new Separator
-                {
-                    Step = 1,
-                    IsEnabled = true //disable it to make it invisible.
-                }
-            });
-
-            this.chart.AxisY.Add(new Axis
-            {
-                Title = "Infetti",
-                LabelFormatter = value => value.ToString("N0")
-            });
-
-            this.chart.LegendLocation = LegendLocation.Top;
+            FillChartWithColumnSeries(region, regionName, Properties.Resources.DailyCases, Properties.Resources.Cases, DataExtractorRegion.FillWeeklyCases);
         }
 
         public void FillChartWithWeeklySwab(int region, string regionName)
         {
-            var data = DataExtractorRegion.FillWeeklySwab(region);
-
-            this.chart.Series.Clear();
-            this.chart.AxisX.Clear();
-            this.chart.AxisY.Clear();
-
-            this.chart.Series = new SeriesCollection
-            {
-                new ColumnSeries
-                {
-                    Title = $"{Properties.Resources.WeeklySwabs} {regionName}",
-                    Values = new ChartValues<float>(data.Select(s => s.value)),
-                    PointGeometry = DefaultGeometries.None,
-                    DataLabels = true,
-                    LabelPoint = point => point.Y.ToString("N0")
-                }
-            };
-
-            this.chart.AxisX.Add(new Axis
-            {
-                Labels = data.Select(s => s.lbl).ToList(),
-                LabelsRotation = 15,
-                Separator = new Separator
-                {
-                    Step = 1,
-                    IsEnabled = true //disable it to make it invisible.
-                }
-            });
-
-            this.chart.AxisY.Add(new Axis
-            {
-                Title = Properties.Resources.Swabs,
-                LabelFormatter = value => value.ToString("N0")
-            });
-
-            this.chart.LegendLocation = LegendLocation.Top;
+            FillChartWithColumnSeries(region, regionName, Properties.Resources.WeeklySwabs, Properties.Resources.Swabs, DataExtractorRegion.FillWeeklyCases);
         }
 
         public void FillChartWithWeeklySwabCases(int region, string regionName)
@@ -399,6 +197,69 @@ namespace CovidItalyAnalyzer.Library
                 Title = Properties.Resources.RelationshipCasesSwabs,
                 LabelFormatter = value => value.ToString("P"),
                 Position = AxisPosition.RightTop
+            });
+
+            this.chart.LegendLocation = LegendLocation.Top;
+        }
+
+        private void FillChartWithLinearSeries(int region, string regionName, string titleSeries, string titleY, Func<int, List<ReturnData>> func)
+        {
+            var data = func.Invoke(region);
+            var linearSeries = new LineSeries
+            {
+                Title = $"{titleSeries} {regionName}",
+                Values = new ChartValues<float>(data.Select(s => s.value)),
+                PointGeometry = DefaultGeometries.None,
+                DataLabels = false,
+                LabelPoint = point => point.Y.ToString("N0")
+            };
+
+            var labels = data.Select(s => s.lbl).ToList();
+            FillChart(titleSeries, titleY, linearSeries, labels, 7);
+        }
+
+        private void FillChartWithColumnSeries(int region, string regionName, string titleSeries, string titleY, Func<int, List<ReturnData>> func)
+        {
+            var data = func.Invoke(region);
+            var columnSeries = new ColumnSeries
+            {
+                Title = $"{Properties.Resources.WeeklySwabs} {regionName}",
+                Values = new ChartValues<float>(data.Select(s => s.value)),
+                PointGeometry = DefaultGeometries.None,
+                DataLabels = true,
+                LabelPoint = point => point.Y.ToString("N0")
+            };
+
+            var labels = data.Select(s => s.lbl).ToList();
+            FillChart(titleSeries, titleY, columnSeries, labels, 1);
+        }
+
+        private void FillChart(string titleSeries, string titleY, ISeriesView series, IList<string> label, int step)
+        {
+            this.chart.Series.Clear();
+            this.chart.AxisX.Clear();
+            this.chart.AxisY.Clear();
+
+            this.chart.Series = new SeriesCollection
+            {
+               series
+            };
+
+            this.chart.AxisX.Add(new Axis
+            {
+                Labels = label,
+                LabelsRotation = 15,
+                Separator = new Separator
+                {
+                    Step = step,
+                    IsEnabled = true //disable it to make it invisible.
+                }
+            });
+
+            this.chart.AxisY.Add(new Axis
+            {
+                Title = titleY,
+                LabelFormatter = value => value.ToString("N0")
             });
 
             this.chart.LegendLocation = LegendLocation.Top;

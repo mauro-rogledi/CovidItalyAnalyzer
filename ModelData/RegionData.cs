@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,5 +28,10 @@ namespace CovidItalyAnalyzer.ModelData
         public float totale_casi { get; set; }
         public float tamponi { get; set; }
         public float? casi_testati { get; set; }
+        
+        [JsonIgnore]
+        public float nuovi_tamponi { get; set; }
+        [JsonIgnore]
+        public float nuovi_deceduti { get; set; }
     }
 }

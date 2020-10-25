@@ -39,6 +39,10 @@ namespace CovidItalyAnalyzer.Library
 
             ChartAvailable.Add(Properties.Resources.NewCasesInRange, () => FillChart(Properties.Resources.NewCasesInRange, p => p.nuovi_positivi));
             ChartAvailable.Add(Properties.Resources.CasePerinhabitants, () => FillChartInhabitants(Properties.Resources.CasePerinhabitants, p => p.nuovi_positivi));
+            ChartAvailable.Add(Properties.Resources.DeadsInRange, () => FillChart(Properties.Resources.DeadsInRange, p => p.nuovi_deceduti));
+            ChartAvailable.Add(Properties.Resources.DeadsPerinhabitants, () => FillChartInhabitants(Properties.Resources.DeadsPerinhabitants, p => p.nuovi_deceduti));
+            ChartAvailable.Add(Properties.Resources.SwabsInRange, () => FillChart(Properties.Resources.SwabsInRange, p => p.nuovi_tamponi));
+            ChartAvailable.Add(Properties.Resources.SwabsPerinhabitants, () => FillChartInhabitants(Properties.Resources.SwabsPerinhabitants, p => p.nuovi_tamponi));
         }
 
         public string[] GetChartAvailable()

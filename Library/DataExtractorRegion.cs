@@ -21,14 +21,19 @@ namespace CovidItalyAnalyzer.Library
         private static CalendarWeekRule myCWR = myCI.DateTimeFormat.CalendarWeekRule;
         private static DayOfWeek myFirstDOW = myCI.DateTimeFormat.FirstDayOfWeek;
 
+        public static List<ReturnData> FillIntensiveCare(int region)
+        {
+            return FillRegionWithFunction(region, f => f.terapia_intensiva);
+        }
+
         public static List<ReturnData> FillDailyDeads(int region)
         {
-            return FillRegionDifferentsWithFunction(region, f => f.deceduti);
+            return FillRegionWithFunction(region, f => f.nuovi_deceduti);
         }
 
         public static List<ReturnData> FillDailySwabs(int region)
         {
-            return FillRegionDifferentsWithFunction(region, f => f.tamponi);
+            return FillRegionWithFunction(region, f => f.nuovi_tamponi);
         }
 
         public static List<ReturnData> FillDailyCases(int region)
@@ -192,7 +197,7 @@ namespace CovidItalyAnalyzer.Library
                 .ToList();
         }
 
-        private static List<ReturnData> FillRegionDifferentsWithFunction(int region, Func<RegionData, float> func)
+        public static List<ReturnData> FillRegionDifferentsWithFunction(int region, Func<RegionData, float> func)
         {
             List<RegionData> list = DataReaderRegion.ReadRegionData(region)
                 .ToList();
@@ -208,7 +213,7 @@ namespace CovidItalyAnalyzer.Library
                 .ToList();
         }
 
-        private static List<ReturnData> FillRegionWithFunction(int region, Func<RegionData, float> func)
+        public static List<ReturnData> FillRegionWithFunction(int region, Func<RegionData, float> func)
         {
             return DataReaderRegion.ReadRegionData(region)
                 .Select((curr, i) => new ReturnData()

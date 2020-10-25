@@ -31,24 +31,26 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.pieControl1 = new CovidItalyAnalyzer.Controls.PieChartControl();
-            this.pieControl3 = new CovidItalyAnalyzer.Controls.PieChartControl();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.pieControl2 = new CovidItalyAnalyzer.Controls.PieChartControl();
             this.spcCounty = new System.Windows.Forms.SplitContainer();
-            this.cartesianChartCountyControl1 = new CovidItalyAnalyzer.Controls.CartesianChartCountyControl();
-            this.cartesianChartCountyControl2 = new CovidItalyAnalyzer.Controls.CartesianChartCountyControl();
             this.spcRegion = new System.Windows.Forms.SplitContainer();
-            this.cartesianChartRegionControl1 = new CovidItalyAnalyzer.Controls.CartesianChartRegionControl();
-            this.cartesianChartRegionControl2 = new CovidItalyAnalyzer.Controls.CartesianChartRegionControl();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.tpgItaly = new System.Windows.Forms.TabPage();
             this.tpgRegions = new System.Windows.Forms.TabPage();
             this.tpgCounty = new System.Windows.Forms.TabPage();
+            this.tpgTable = new System.Windows.Forms.TabPage();
             this.btnRefresh = new MetroFramework.Controls.MetroLink();
             this.btnSettings = new MetroFramework.Controls.MetroLink();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.pieControl1 = new CovidItalyAnalyzer.Controls.PieChartControl();
+            this.pieControl3 = new CovidItalyAnalyzer.Controls.PieChartControl();
+            this.pieControl2 = new CovidItalyAnalyzer.Controls.PieChartControl();
+            this.pieControl4 = new CovidItalyAnalyzer.Controls.PieChartControl();
+            this.cartesianChartRegionControl1 = new CovidItalyAnalyzer.Controls.CartesianChartRegionControl();
+            this.cartesianChartRegionControl2 = new CovidItalyAnalyzer.Controls.CartesianChartRegionControl();
+            this.cartesianChartCountyControl1 = new CovidItalyAnalyzer.Controls.CartesianChartCountyControl();
+            this.cartesianChartCountyControl2 = new CovidItalyAnalyzer.Controls.CartesianChartCountyControl();
+            this.dgwRegionData = new System.Windows.Forms.DataGridView();
+            this.regionDataControl1 = new CovidItalyAnalyzer.Controls.RegionDataControl();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -59,6 +61,7 @@
             this.splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
             this.splitContainer3.Panel1.SuspendLayout();
+            this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spcCounty)).BeginInit();
             this.spcCounty.Panel1.SuspendLayout();
@@ -72,8 +75,8 @@
             this.tpgItaly.SuspendLayout();
             this.tpgRegions.SuspendLayout();
             this.tpgCounty.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.tpgTable.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwRegionData)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -102,18 +105,6 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.pieControl3);
             // 
-            // pieControl1
-            // 
-            resources.ApplyResources(this.pieControl1, "pieControl1");
-            this.pieControl1.Name = "pieControl1";
-            this.pieControl1.UseSelectable = true;
-            // 
-            // pieControl3
-            // 
-            resources.ApplyResources(this.pieControl3, "pieControl3");
-            this.pieControl3.Name = "pieControl3";
-            this.pieControl3.UseSelectable = true;
-            // 
             // splitContainer3
             // 
             resources.ApplyResources(this.splitContainer3, "splitContainer3");
@@ -123,11 +114,9 @@
             // 
             this.splitContainer3.Panel1.Controls.Add(this.pieControl2);
             // 
-            // pieControl2
+            // splitContainer3.Panel2
             // 
-            resources.ApplyResources(this.pieControl2, "pieControl2");
-            this.pieControl2.Name = "pieControl2";
-            this.pieControl2.UseSelectable = true;
+            this.splitContainer3.Panel2.Controls.Add(this.pieControl4);
             // 
             // spcCounty
             // 
@@ -142,18 +131,6 @@
             // 
             this.spcCounty.Panel2.Controls.Add(this.cartesianChartCountyControl2);
             // 
-            // cartesianChartCountyControl1
-            // 
-            resources.ApplyResources(this.cartesianChartCountyControl1, "cartesianChartCountyControl1");
-            this.cartesianChartCountyControl1.Name = "cartesianChartCountyControl1";
-            this.cartesianChartCountyControl1.UseSelectable = true;
-            // 
-            // cartesianChartCountyControl2
-            // 
-            resources.ApplyResources(this.cartesianChartCountyControl2, "cartesianChartCountyControl2");
-            this.cartesianChartCountyControl2.Name = "cartesianChartCountyControl2";
-            this.cartesianChartCountyControl2.UseSelectable = true;
-            // 
             // spcRegion
             // 
             resources.ApplyResources(this.spcRegion, "spcRegion");
@@ -167,24 +144,12 @@
             // 
             this.spcRegion.Panel2.Controls.Add(this.cartesianChartRegionControl2);
             // 
-            // cartesianChartRegionControl1
-            // 
-            resources.ApplyResources(this.cartesianChartRegionControl1, "cartesianChartRegionControl1");
-            this.cartesianChartRegionControl1.Name = "cartesianChartRegionControl1";
-            this.cartesianChartRegionControl1.UseSelectable = true;
-            // 
-            // cartesianChartRegionControl2
-            // 
-            resources.ApplyResources(this.cartesianChartRegionControl2, "cartesianChartRegionControl2");
-            this.cartesianChartRegionControl2.Name = "cartesianChartRegionControl2";
-            this.cartesianChartRegionControl2.UseSelectable = true;
-            // 
             // metroTabControl1
             // 
             this.metroTabControl1.Controls.Add(this.tpgItaly);
             this.metroTabControl1.Controls.Add(this.tpgRegions);
             this.metroTabControl1.Controls.Add(this.tpgCounty);
-            this.metroTabControl1.Controls.Add(this.tabPage2);
+            this.metroTabControl1.Controls.Add(this.tpgTable);
             resources.ApplyResources(this.metroTabControl1, "metroTabControl1");
             this.metroTabControl1.Name = "metroTabControl1";
             this.metroTabControl1.SelectedIndex = 3;
@@ -210,6 +175,13 @@
             this.tpgCounty.Name = "tpgCounty";
             this.tpgCounty.UseVisualStyleBackColor = true;
             // 
+            // tpgTable
+            // 
+            this.tpgTable.Controls.Add(this.regionDataControl1);
+            this.tpgTable.Controls.Add(this.dgwRegionData);
+            resources.ApplyResources(this.tpgTable, "tpgTable");
+            this.tpgTable.Name = "tpgTable";
+            // 
             // btnRefresh
             // 
             resources.ApplyResources(this.btnRefresh, "btnRefresh");
@@ -230,17 +202,65 @@
             this.btnSettings.UseStyleColors = true;
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
-            // tabPage2
+            // pieControl1
             // 
-            this.tabPage2.Controls.Add(this.dataGridView1);
-            resources.ApplyResources(this.tabPage2, "tabPage2");
-            this.tabPage2.Name = "tabPage2";
+            resources.ApplyResources(this.pieControl1, "pieControl1");
+            this.pieControl1.Name = "pieControl1";
+            this.pieControl1.UseSelectable = true;
             // 
-            // dataGridView1
+            // pieControl3
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            resources.ApplyResources(this.dataGridView1, "dataGridView1");
-            this.dataGridView1.Name = "dataGridView1";
+            resources.ApplyResources(this.pieControl3, "pieControl3");
+            this.pieControl3.Name = "pieControl3";
+            this.pieControl3.UseSelectable = true;
+            // 
+            // pieControl2
+            // 
+            resources.ApplyResources(this.pieControl2, "pieControl2");
+            this.pieControl2.Name = "pieControl2";
+            this.pieControl2.UseSelectable = true;
+            // 
+            // pieControl4
+            // 
+            resources.ApplyResources(this.pieControl4, "pieControl4");
+            this.pieControl4.Name = "pieControl4";
+            this.pieControl4.UseSelectable = true;
+            // 
+            // cartesianChartRegionControl1
+            // 
+            resources.ApplyResources(this.cartesianChartRegionControl1, "cartesianChartRegionControl1");
+            this.cartesianChartRegionControl1.Name = "cartesianChartRegionControl1";
+            this.cartesianChartRegionControl1.UseSelectable = true;
+            // 
+            // cartesianChartRegionControl2
+            // 
+            resources.ApplyResources(this.cartesianChartRegionControl2, "cartesianChartRegionControl2");
+            this.cartesianChartRegionControl2.Name = "cartesianChartRegionControl2";
+            this.cartesianChartRegionControl2.UseSelectable = true;
+            // 
+            // cartesianChartCountyControl1
+            // 
+            resources.ApplyResources(this.cartesianChartCountyControl1, "cartesianChartCountyControl1");
+            this.cartesianChartCountyControl1.Name = "cartesianChartCountyControl1";
+            this.cartesianChartCountyControl1.UseSelectable = true;
+            // 
+            // cartesianChartCountyControl2
+            // 
+            resources.ApplyResources(this.cartesianChartCountyControl2, "cartesianChartCountyControl2");
+            this.cartesianChartCountyControl2.Name = "cartesianChartCountyControl2";
+            this.cartesianChartCountyControl2.UseSelectable = true;
+            // 
+            // dgwRegionData
+            // 
+            this.dgwRegionData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            resources.ApplyResources(this.dgwRegionData, "dgwRegionData");
+            this.dgwRegionData.Name = "dgwRegionData";
+            // 
+            // regionDataControl1
+            // 
+            resources.ApplyResources(this.regionDataControl1, "regionDataControl1");
+            this.regionDataControl1.Name = "regionDataControl1";
+            this.regionDataControl1.UseSelectable = true;
             // 
             // mainForm
             // 
@@ -259,6 +279,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.splitContainer3.Panel1.ResumeLayout(false);
+            this.splitContainer3.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
             this.spcCounty.Panel1.ResumeLayout(false);
@@ -273,8 +294,8 @@
             this.tpgItaly.ResumeLayout(false);
             this.tpgRegions.ResumeLayout(false);
             this.tpgCounty.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.tpgTable.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgwRegionData)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -299,8 +320,10 @@
         private Controls.CartesianChartCountyControl cartesianChartCountyControl1;
         private Controls.CartesianChartCountyControl cartesianChartCountyControl2;
         private Controls.CartesianChartRegionControl cartesianChartRegionControl2;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TabPage tpgTable;
+        private Controls.PieChartControl pieControl4;
+        private Controls.RegionDataControl regionDataControl1;
+        private System.Windows.Forms.DataGridView dgwRegionData;
     }
 }
 

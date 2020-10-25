@@ -151,6 +151,7 @@
             // emhChart
             // 
             resources.ApplyResources(this.emhChart, "emhChart");
+            this.emhChart.BackColorTransparent = true;
             this.emhChart.Name = "emhChart";
             this.emhChart.Child = this.pieChart;
             // 

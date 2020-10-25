@@ -26,7 +26,6 @@ namespace CovidItalyAnalyzer.Library
         {
             folder = folderName;
             ReadRegionData(folderName);
-            ReadItalyRegions();
         }
 
         internal static IOrderedEnumerable<RegionData> ReadRegionData(int region)
@@ -41,6 +40,7 @@ namespace CovidItalyAnalyzer.Library
             return DataReaderRegion.RegionDatas
                  .Where(r => r.data.Date == date.Date);
         }
+
         internal static IEnumerable<RegionData> ReadRegionsAtRangeDate(DateTime dateFrom, DateTime dateTo)
         {
             return DataReaderRegion.RegionDatas
@@ -51,8 +51,6 @@ namespace CovidItalyAnalyzer.Library
         {
             return italyRegions
                 .OrderBy(o => o.denominazione_regione);
-
-            //.Select(r => new  ComboData() { value = r.codice_regione, display =r.denominazione_regione }).ToArray();
         }
 
         internal static void RefreshDatas()
@@ -63,12 +61,32 @@ namespace CovidItalyAnalyzer.Library
         private static void ReadRegionData(string folderName)
         {
             string fileName = Path.Combine(folderName, "dati-json\\dpc-covid19-ita-regioni.json");
-            RegionDatas = Newtonsoft.Json.JsonConvert.DeserializeObject<List<RegionData>>(File.ReadAllText(fileName));
+            var allData = Newtonsoft.Json.JsonConvert.DeserializeObject<List<RegionData>>(File.ReadAllText(fileName));
+            ReadItalyRegions(allData);
+
+            RegionDatas = new List<RegionData>();
+
+            foreach (var region in italyRegions)
+            {
+                var data = allData
+                    .Where(r => r.codice_regione == region.codice_regione)
+                    .OrderBy(o => o.data)
+                    .ToList();
+
+                RegionDatas.AddRange(
+                    data.Select((curr, i) =>
+                        {
+                            curr.nuovi_tamponi = i > 0 ? curr.tamponi - data[i - 1].tamponi : curr.tamponi;
+                            curr.nuovi_deceduti = i > 0 ? curr.deceduti - data[i - 1].deceduti : curr.deceduti;
+                            return curr;
+                        })
+                );
+            }
         }
 
-        private static void ReadItalyRegions()
+        private static void ReadItalyRegions(List<RegionData> allData)
         {
-            italyRegions = RegionDatas
+            italyRegions = allData
                 .OrderBy(d => d.codice_regione)
                 .Distinct(new RegionCompare())
                 .Aggregate<RegionData, List<ItalyRegion>>(
@@ -104,5 +122,4 @@ namespace CovidItalyAnalyzer.Library
             return obj.denominazione_regione.GetHashCode() ^ obj.codice_regione.GetHashCode();
         }
     }
-
 }

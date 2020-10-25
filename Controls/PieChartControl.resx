@@ -131,6 +131,9 @@
   <data name="dttTo.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>0, 25</value>
   </data>
+  <data name="cbbTop.TabIndex" type="System.Int32, mscorlib">
+    <value>34</value>
+  </data>
   <data name="metroLabel8.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 12</value>
   </data>
@@ -141,17 +144,17 @@
   <data name="cbbTop.Location" type="System.Drawing.Point, System.Drawing">
     <value>623, 7</value>
   </data>
-  <data name="&gt;&gt;metroLabel7.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
   <data name="&gt;&gt;dttTo.Parent" xml:space="preserve">
     <value>metroPanel1</value>
   </data>
-  <data name="&gt;&gt;cbbTop.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="metroPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>906, 62</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>PieChartControl</value>
+  </data>
+  <data name="&gt;&gt;metroLabel9.Name" xml:space="preserve">
+    <value>metroLabel9</value>
   </data>
   <data name="dttFrom.Location" type="System.Drawing.Point, System.Drawing">
     <value>40, 7</value>
@@ -164,9 +167,6 @@
   </data>
   <data name="&gt;&gt;metroLabel7.Name" xml:space="preserve">
     <value>metroLabel7</value>
-  </data>
-  <data name="metroLabel7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>372, 12</value>
   </data>
   <data name="&gt;&gt;metroLabel10.Name" xml:space="preserve">
     <value>metroLabel10</value>
@@ -198,8 +198,8 @@
   <data name="mtlTitle.Size" type="System.Drawing.Size, System.Drawing">
     <value>900, 23</value>
   </data>
-  <data name="metroPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>906, 62</value>
+  <data name="&gt;&gt;metroLabel7.ZOrder" xml:space="preserve">
+    <value>10</value>
   </data>
   <data name="&gt;&gt;metroPanel1.Parent" xml:space="preserve">
     <value>$this</value>
@@ -207,23 +207,26 @@
   <data name="dttTo.CustomFormat" xml:space="preserve">
     <value>dd/MM/yy</value>
   </data>
-  <data name="metroLabel9.Text" xml:space="preserve">
-    <value>To</value>
-  </data>
   <data name="&gt;&gt;metroLabel8.Type" xml:space="preserve">
     <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
   </data>
   <data name="metroLabel10.TabIndex" type="System.Int32, mscorlib">
     <value>33</value>
   </data>
+  <data name="&gt;&gt;cbbChart.Name" xml:space="preserve">
+    <value>cbbChart</value>
+  </data>
   <data name="emhChart.Text" xml:space="preserve">
     <value>elementHost1</value>
+  </data>
+  <data name="&gt;&gt;metroLabel9.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="dttTo.TabIndex" type="System.Int32, mscorlib">
     <value>31</value>
   </data>
-  <data name="&gt;&gt;mtlTitle.Name" xml:space="preserve">
-    <value>mtlTitle</value>
+  <data name="&gt;&gt;metroPanel1.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;dttFrom.Type" xml:space="preserve">
     <value>MetroFramework.Controls.MetroDateTime, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
@@ -273,20 +276,14 @@
   <data name="metroPanel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="mtlTitle.TabIndex" type="System.Int32, mscorlib">
-    <value>35</value>
-  </data>
-  <data name="dttFrom.TabIndex" type="System.Int32, mscorlib">
-    <value>30</value>
+  <data name="metroLabel10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 15</value>
   </data>
   <data name="&gt;&gt;metroLabel8.Parent" xml:space="preserve">
     <value>metroPanel1</value>
   </data>
   <data name="metroLabel10.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </data>
-  <data name="dttFrom.CustomFormat" xml:space="preserve">
-    <value>dd/MM/yy</value>
   </data>
   <data name="&gt;&gt;metroLabel7.Type" xml:space="preserve">
     <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
@@ -306,20 +303,23 @@
   <data name="metroLabel8.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;metroLabel10.Parent" xml:space="preserve">
-    <value>metroPanel1</value>
-  </data>
   <data name="metroLabel9.Size" type="System.Drawing.Size, System.Drawing">
     <value>18, 15</value>
   </data>
   <data name="&gt;&gt;cbbTop.Type" xml:space="preserve">
     <value>MetroFramework.Controls.MetroComboBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
   </data>
+  <data name="&gt;&gt;cbbChart.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
   <data name="emhChart.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 62</value>
   </data>
   <data name="metroLabel8.Text" xml:space="preserve">
     <value>From</value>
+  </data>
+  <data name="&gt;&gt;emhChart.Name" xml:space="preserve">
+    <value>emhChart</value>
   </data>
   <data name="&gt;&gt;emhChart.Type" xml:space="preserve">
     <value>System.Windows.Forms.Integration.ElementHost, WindowsFormsIntegration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</value>
@@ -333,8 +333,8 @@
   <data name="metroLabel9.Location" type="System.Drawing.Point, System.Drawing">
     <value>194, 12</value>
   </data>
-  <data name="&gt;&gt;emhChart.Name" xml:space="preserve">
-    <value>emhChart</value>
+  <data name="mtlTitle.TabIndex" type="System.Int32, mscorlib">
+    <value>35</value>
   </data>
   <data name="cbbTop.ItemHeight" type="System.Int32, mscorlib">
     <value>19</value>
@@ -342,8 +342,8 @@
   <data name="emhChart.Size" type="System.Drawing.Size, System.Drawing">
     <value>906, 365</value>
   </data>
-  <data name="&gt;&gt;metroPanel1.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="metroLabel7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>372, 12</value>
   </data>
   <data name="metroLabel9.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -357,14 +357,14 @@
   <data name="&gt;&gt;emhChart.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;metroLabel9.ZOrder" xml:space="preserve">
-    <value>5</value>
+  <data name="&gt;&gt;cbbTop.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
-  <data name="cbbTop.TabIndex" type="System.Int32, mscorlib">
-    <value>34</value>
+  <data name="dttFrom.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
   </data>
-  <data name="&gt;&gt;cbbChart.Name" xml:space="preserve">
-    <value>cbbChart</value>
+  <data name="metroLabel9.Text" xml:space="preserve">
+    <value>To</value>
   </data>
   <data name="&gt;&gt;metroPanel1.Name" xml:space="preserve">
     <value>metroPanel1</value>
@@ -378,8 +378,8 @@
   <data name="metroPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;metroLabel9.Name" xml:space="preserve">
-    <value>metroLabel9</value>
+  <data name="&gt;&gt;metroLabel10.Parent" xml:space="preserve">
+    <value>metroPanel1</value>
   </data>
   <data name="&gt;&gt;emhChart.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -390,8 +390,8 @@
   <data name="&gt;&gt;metroLabel10.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="metroLabel10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>25, 15</value>
+  <data name="dttFrom.CustomFormat" xml:space="preserve">
+    <value>dd/MM/yy</value>
   </data>
   <data name="cbbChart.Size" type="System.Drawing.Size, System.Drawing">
     <value>169, 25</value>
@@ -411,8 +411,8 @@
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>MetroFramework.Controls.MetroUserControl, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
   </data>
-  <data name="&gt;&gt;cbbChart.ZOrder" xml:space="preserve">
-    <value>9</value>
+  <data name="&gt;&gt;mtlTitle.Name" xml:space="preserve">
+    <value>mtlTitle</value>
   </data>
   <data name="cbbTop.Size" type="System.Drawing.Size, System.Drawing">
     <value>82, 25</value>
