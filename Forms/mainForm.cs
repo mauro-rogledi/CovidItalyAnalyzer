@@ -8,9 +8,9 @@ using System.Linq;
 
 namespace CovidItalyAnalyzer.Forms
 {
-    public partial class mainForm : MetroForm
+    public partial class MainForm : MetroForm
     {
-        public mainForm()
+        public MainForm()
         {
             SettingManager.ReadData();
             InitializeComponent();
@@ -23,8 +23,8 @@ namespace CovidItalyAnalyzer.Forms
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
-            var setForm = new settingsForm();
-            setForm.ShowDialog(this);
+            new SettingsForm()
+                .ShowDialog();
 
             btnRefresh.Enabled = SettingManager.UseGitHub;
         }
@@ -35,6 +35,7 @@ namespace CovidItalyAnalyzer.Forms
             lblStatus.Text = Properties.Resources.DownloadingData;
 
             var (fromClone, message) = await DataReader.RefreshData();
+
             lblStatus.Text = message;
             btnRefresh.Enabled = true;
 

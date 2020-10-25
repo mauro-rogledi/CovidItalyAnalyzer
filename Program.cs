@@ -13,7 +13,7 @@ namespace CovidItalyAnalyzer
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Forms.mainForm());
+            Application.Run(new Forms.MainForm());
         }
 
     }

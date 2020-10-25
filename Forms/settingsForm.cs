@@ -14,9 +14,9 @@ using System.Windows.Forms;
 
 namespace CovidItalyAnalyzer.Forms
 {
-    public partial class settingsForm : MetroForm
+    public partial class SettingsForm : MetroForm
     {
-        public settingsForm()
+        public SettingsForm()
         {
             InitializeComponent();
             ReadDataFromSettings();

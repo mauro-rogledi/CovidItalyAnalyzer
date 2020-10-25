@@ -1,6 +1,6 @@
 ﻿namespace CovidItalyAnalyzer.Forms
 {
-    partial class settingsForm
+    partial class SettingsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(settingsForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.txtFolder = new MetroFramework.Controls.MetroTextBox();
             this.fbdFolder = new System.Windows.Forms.FolderBrowserDialog();
@@ -55,13 +55,30 @@
             // 
             // 
             // 
+            this.txtFolder.CustomButton.AccessibleDescription = resources.GetString("resource.AccessibleDescription");
+            this.txtFolder.CustomButton.AccessibleName = resources.GetString("resource.AccessibleName");
+            this.txtFolder.CustomButton.Anchor = ((System.Windows.Forms.AnchorStyles)(resources.GetObject("resource.Anchor")));
+            this.txtFolder.CustomButton.AutoSize = ((bool)(resources.GetObject("resource.AutoSize")));
+            this.txtFolder.CustomButton.AutoSizeMode = ((System.Windows.Forms.AutoSizeMode)(resources.GetObject("resource.AutoSizeMode")));
+            this.txtFolder.CustomButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("resource.BackgroundImage")));
+            this.txtFolder.CustomButton.BackgroundImageLayout = ((System.Windows.Forms.ImageLayout)(resources.GetObject("resource.BackgroundImageLayout")));
+            this.txtFolder.CustomButton.Dock = ((System.Windows.Forms.DockStyle)(resources.GetObject("resource.Dock")));
+            this.txtFolder.CustomButton.FlatStyle = ((System.Windows.Forms.FlatStyle)(resources.GetObject("resource.FlatStyle")));
+            this.txtFolder.CustomButton.Font = ((System.Drawing.Font)(resources.GetObject("resource.Font")));
             this.txtFolder.CustomButton.Image = global::CovidItalyAnalyzer.Properties.Resources.icons8_folder_24;
+            this.txtFolder.CustomButton.ImageAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("resource.ImageAlign")));
+            this.txtFolder.CustomButton.ImageIndex = ((int)(resources.GetObject("resource.ImageIndex")));
+            this.txtFolder.CustomButton.ImageKey = resources.GetString("resource.ImageKey");
             this.txtFolder.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode")));
             this.txtFolder.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location")));
+            this.txtFolder.CustomButton.MaximumSize = ((System.Drawing.Size)(resources.GetObject("resource.MaximumSize")));
             this.txtFolder.CustomButton.Name = "";
+            this.txtFolder.CustomButton.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("resource.RightToLeft")));
             this.txtFolder.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size")));
             this.txtFolder.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txtFolder.CustomButton.TabIndex = ((int)(resources.GetObject("resource.TabIndex")));
+            this.txtFolder.CustomButton.TextAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("resource.TextAlign")));
+            this.txtFolder.CustomButton.TextImageRelation = ((System.Windows.Forms.TextImageRelation)(resources.GetObject("resource.TextImageRelation")));
             this.txtFolder.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.txtFolder.CustomButton.UseSelectable = true;
             this.txtFolder.Icon = global::CovidItalyAnalyzer.Properties.Resources.icons8_folder_24;
@@ -82,6 +99,10 @@
             this.txtFolder.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtFolder.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             this.txtFolder.ButtonClick += new MetroFramework.Controls.MetroTextBox.ButClick(this.btnFolder_Click);
+            // 
+            // fbdFolder
+            // 
+            resources.ApplyResources(this.fbdFolder, "fbdFolder");
             // 
             // btnUndo
             // 
@@ -130,13 +151,30 @@
             // 
             // 
             // 
+            this.txtUsername.CustomButton.AccessibleDescription = resources.GetString("resource.AccessibleDescription1");
+            this.txtUsername.CustomButton.AccessibleName = resources.GetString("resource.AccessibleName1");
+            this.txtUsername.CustomButton.Anchor = ((System.Windows.Forms.AnchorStyles)(resources.GetObject("resource.Anchor1")));
+            this.txtUsername.CustomButton.AutoSize = ((bool)(resources.GetObject("resource.AutoSize1")));
+            this.txtUsername.CustomButton.AutoSizeMode = ((System.Windows.Forms.AutoSizeMode)(resources.GetObject("resource.AutoSizeMode1")));
+            this.txtUsername.CustomButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("resource.BackgroundImage1")));
+            this.txtUsername.CustomButton.BackgroundImageLayout = ((System.Windows.Forms.ImageLayout)(resources.GetObject("resource.BackgroundImageLayout1")));
+            this.txtUsername.CustomButton.Dock = ((System.Windows.Forms.DockStyle)(resources.GetObject("resource.Dock1")));
+            this.txtUsername.CustomButton.FlatStyle = ((System.Windows.Forms.FlatStyle)(resources.GetObject("resource.FlatStyle1")));
+            this.txtUsername.CustomButton.Font = ((System.Drawing.Font)(resources.GetObject("resource.Font1")));
             this.txtUsername.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            this.txtUsername.CustomButton.ImageAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("resource.ImageAlign1")));
+            this.txtUsername.CustomButton.ImageIndex = ((int)(resources.GetObject("resource.ImageIndex1")));
+            this.txtUsername.CustomButton.ImageKey = resources.GetString("resource.ImageKey1");
             this.txtUsername.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode1")));
             this.txtUsername.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location1")));
+            this.txtUsername.CustomButton.MaximumSize = ((System.Drawing.Size)(resources.GetObject("resource.MaximumSize1")));
             this.txtUsername.CustomButton.Name = "";
+            this.txtUsername.CustomButton.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("resource.RightToLeft1")));
             this.txtUsername.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size1")));
             this.txtUsername.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txtUsername.CustomButton.TabIndex = ((int)(resources.GetObject("resource.TabIndex1")));
+            this.txtUsername.CustomButton.TextAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("resource.TextAlign1")));
+            this.txtUsername.CustomButton.TextImageRelation = ((System.Windows.Forms.TextImageRelation)(resources.GetObject("resource.TextImageRelation1")));
             this.txtUsername.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.txtUsername.CustomButton.UseSelectable = true;
             this.txtUsername.CustomButton.Visible = ((bool)(resources.GetObject("resource.Visible")));
@@ -144,7 +182,6 @@
             this.txtUsername.MaxLength = 32767;
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.PasswordChar = '\0';
-            this.txtUsername.PromptText = "insert username";
             this.txtUsername.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtUsername.SelectedText = "";
             this.txtUsername.SelectionLength = 0;
@@ -152,7 +189,7 @@
             this.txtUsername.ShortcutsEnabled = true;
             this.txtUsername.UseSelectable = true;
             this.txtUsername.UseStyleColors = true;
-            this.txtUsername.WaterMark = "insert username";
+            this.txtUsername.WaterMark = "inserire nome utente";
             this.txtUsername.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtUsername.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
@@ -162,13 +199,30 @@
             // 
             // 
             // 
+            this.txtPassword.CustomButton.AccessibleDescription = resources.GetString("resource.AccessibleDescription2");
+            this.txtPassword.CustomButton.AccessibleName = resources.GetString("resource.AccessibleName2");
+            this.txtPassword.CustomButton.Anchor = ((System.Windows.Forms.AnchorStyles)(resources.GetObject("resource.Anchor2")));
+            this.txtPassword.CustomButton.AutoSize = ((bool)(resources.GetObject("resource.AutoSize2")));
+            this.txtPassword.CustomButton.AutoSizeMode = ((System.Windows.Forms.AutoSizeMode)(resources.GetObject("resource.AutoSizeMode2")));
+            this.txtPassword.CustomButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("resource.BackgroundImage2")));
+            this.txtPassword.CustomButton.BackgroundImageLayout = ((System.Windows.Forms.ImageLayout)(resources.GetObject("resource.BackgroundImageLayout2")));
+            this.txtPassword.CustomButton.Dock = ((System.Windows.Forms.DockStyle)(resources.GetObject("resource.Dock2")));
+            this.txtPassword.CustomButton.FlatStyle = ((System.Windows.Forms.FlatStyle)(resources.GetObject("resource.FlatStyle2")));
+            this.txtPassword.CustomButton.Font = ((System.Drawing.Font)(resources.GetObject("resource.Font2")));
             this.txtPassword.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
+            this.txtPassword.CustomButton.ImageAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("resource.ImageAlign2")));
+            this.txtPassword.CustomButton.ImageIndex = ((int)(resources.GetObject("resource.ImageIndex2")));
+            this.txtPassword.CustomButton.ImageKey = resources.GetString("resource.ImageKey2");
             this.txtPassword.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode2")));
             this.txtPassword.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location2")));
+            this.txtPassword.CustomButton.MaximumSize = ((System.Drawing.Size)(resources.GetObject("resource.MaximumSize2")));
             this.txtPassword.CustomButton.Name = "";
+            this.txtPassword.CustomButton.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("resource.RightToLeft2")));
             this.txtPassword.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size2")));
             this.txtPassword.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txtPassword.CustomButton.TabIndex = ((int)(resources.GetObject("resource.TabIndex2")));
+            this.txtPassword.CustomButton.TextAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("resource.TextAlign2")));
+            this.txtPassword.CustomButton.TextImageRelation = ((System.Windows.Forms.TextImageRelation)(resources.GetObject("resource.TextImageRelation2")));
             this.txtPassword.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.txtPassword.CustomButton.UseSelectable = true;
             this.txtPassword.CustomButton.Visible = ((bool)(resources.GetObject("resource.Visible1")));
@@ -176,7 +230,6 @@
             this.txtPassword.MaxLength = 32767;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '●';
-            this.txtPassword.PromptText = "insert password";
             this.txtPassword.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtPassword.SelectedText = "";
             this.txtPassword.SelectionLength = 0;
@@ -185,7 +238,7 @@
             this.txtPassword.UseSelectable = true;
             this.txtPassword.UseStyleColors = true;
             this.txtPassword.UseSystemPasswordChar = true;
-            this.txtPassword.WaterMark = "insert password";
+            this.txtPassword.WaterMark = "inserire password";
             this.txtPassword.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtPassword.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
@@ -201,13 +254,30 @@
             // 
             // 
             // 
+            this.txtEmail.CustomButton.AccessibleDescription = resources.GetString("resource.AccessibleDescription3");
+            this.txtEmail.CustomButton.AccessibleName = resources.GetString("resource.AccessibleName3");
+            this.txtEmail.CustomButton.Anchor = ((System.Windows.Forms.AnchorStyles)(resources.GetObject("resource.Anchor3")));
+            this.txtEmail.CustomButton.AutoSize = ((bool)(resources.GetObject("resource.AutoSize3")));
+            this.txtEmail.CustomButton.AutoSizeMode = ((System.Windows.Forms.AutoSizeMode)(resources.GetObject("resource.AutoSizeMode3")));
+            this.txtEmail.CustomButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("resource.BackgroundImage3")));
+            this.txtEmail.CustomButton.BackgroundImageLayout = ((System.Windows.Forms.ImageLayout)(resources.GetObject("resource.BackgroundImageLayout3")));
+            this.txtEmail.CustomButton.Dock = ((System.Windows.Forms.DockStyle)(resources.GetObject("resource.Dock3")));
+            this.txtEmail.CustomButton.FlatStyle = ((System.Windows.Forms.FlatStyle)(resources.GetObject("resource.FlatStyle3")));
+            this.txtEmail.CustomButton.Font = ((System.Drawing.Font)(resources.GetObject("resource.Font3")));
             this.txtEmail.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
+            this.txtEmail.CustomButton.ImageAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("resource.ImageAlign3")));
+            this.txtEmail.CustomButton.ImageIndex = ((int)(resources.GetObject("resource.ImageIndex3")));
+            this.txtEmail.CustomButton.ImageKey = resources.GetString("resource.ImageKey3");
             this.txtEmail.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode3")));
             this.txtEmail.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location3")));
+            this.txtEmail.CustomButton.MaximumSize = ((System.Drawing.Size)(resources.GetObject("resource.MaximumSize3")));
             this.txtEmail.CustomButton.Name = "";
+            this.txtEmail.CustomButton.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("resource.RightToLeft3")));
             this.txtEmail.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size3")));
             this.txtEmail.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txtEmail.CustomButton.TabIndex = ((int)(resources.GetObject("resource.TabIndex3")));
+            this.txtEmail.CustomButton.TextAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("resource.TextAlign3")));
+            this.txtEmail.CustomButton.TextImageRelation = ((System.Windows.Forms.TextImageRelation)(resources.GetObject("resource.TextImageRelation3")));
             this.txtEmail.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.txtEmail.CustomButton.UseSelectable = true;
             this.txtEmail.CustomButton.Visible = ((bool)(resources.GetObject("resource.Visible2")));
@@ -215,7 +285,6 @@
             this.txtEmail.MaxLength = 32767;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.PasswordChar = '\0';
-            this.txtEmail.PromptText = "insert email";
             this.txtEmail.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtEmail.SelectedText = "";
             this.txtEmail.SelectionLength = 0;
@@ -223,11 +292,11 @@
             this.txtEmail.ShortcutsEnabled = true;
             this.txtEmail.UseSelectable = true;
             this.txtEmail.UseStyleColors = true;
-            this.txtEmail.WaterMark = "insert email";
+            this.txtEmail.WaterMark = "inserire email";
             this.txtEmail.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtEmail.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // settingsForm
+            // SettingsForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -242,7 +311,7 @@
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.btnUndo);
             this.Controls.Add(this.btnSave);
-            this.Name = "settingsForm";
+            this.Name = "SettingsForm";
             this.ResumeLayout(false);
             this.PerformLayout();
 
