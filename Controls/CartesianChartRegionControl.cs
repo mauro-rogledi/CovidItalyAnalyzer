@@ -3,50 +3,47 @@
 using MetroFramework.Controls;
 
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace CovidItalyAnalyzer.Controls
 {
     public partial class CartesianChartRegionControl : MetroUserControl
     {
-        CartesianChartRegionManager chartManager;
+        private CartesianChartRegionManager chartManager;
+
         public CartesianChartRegionControl()
         {
             InitializeComponent();
 
             if (LicenseManager.UsageMode == LicenseUsageMode.Designtime || DesignMode)
                 return;
-
-            if (DataReaderRegion.HasReadData)
-                InitializeChart();
         }
 
-        private void InitializeChart()
+        private void cbbRegion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RefreshChart();
+        }
+
+        internal void InitializeControls()
+        {
+            InitializeCombo();
+
+            chartManager = new CartesianChartRegionManager(cartesianChart)
+            {
+                Region = () => cbbChart.SelectedItem as ComboData
+            };
+            cbbChart.Items.AddRange(chartManager.GetChartAvailable());
+        }
+
+        public void InitializeCombo()
         {
             cbbRegion.Items.AddRange(
                     DataReaderRegion.ReadRegions()
                         .Select(r => new ComboData() { value = r.codice_regione, display = r.denominazione_regione })
                         .ToArray()
                     );
-
-            chartManager = new CartesianChartRegionManager(cartesianChart)
-            {
-                Region = () => cbbChart.SelectedItem as ComboData
-            };
-
-            cbbChart.Items.AddRange(chartManager.GetChartAvailable());
-        }
-
-        private void cbbRegion_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            RefreshChart();
         }
 
         private void RefreshChart()

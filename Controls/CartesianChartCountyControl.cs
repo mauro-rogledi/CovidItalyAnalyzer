@@ -21,19 +21,21 @@ namespace CovidItalyAnalyzer.Controls
 
             if (LicenseManager.UsageMode == LicenseUsageMode.Designtime || DesignMode)
                 return;
-
-            if (DataReaderRegion.HasReadData)
-                InitializeChart();
         }
 
-        private void InitializeChart()
+        internal void InitializeControls()
+        {
+            InitializeCombo();
+            chartManager = new CartesianChartCountyManager(cartesianChart);
+            cbbChart.Items.AddRange(chartManager.GetChartAvailable());
+        }
+
+        public void InitializeCombo()
         {
             var regions = DataReaderRegion.ReadRegions()
                 .Select(r => new ComboData() { value = r.codice_regione, display = r.denominazione_regione }).ToArray();
 
             cbbRegion.Items.AddRange(regions);
-            chartManager = new CartesianChartCountyManager(cartesianChart);
-            cbbChart.Items.AddRange(chartManager.GetChartAvailable());
         }
 
         private void cbbRegion_SelectedIndexChanged(object sender, EventArgs e)
@@ -46,6 +48,8 @@ namespace CovidItalyAnalyzer.Controls
 
             RefreshChart();
         }
+
+
 
         private void cbbChart_SelectedIndexChanged(object sender, EventArgs e)
         {

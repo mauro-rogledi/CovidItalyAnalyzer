@@ -18,12 +18,9 @@ namespace CovidItalyAnalyzer.Controls
 
             if (LicenseManager.UsageMode == LicenseUsageMode.Designtime || DesignMode)
                 return;
-
-            if (DataReaderRegion.HasReadData)
-                InitializeChart();
         }
 
-        private void InitializeChart()
+        public void InitializeControl()
         {
             int numRegion = DataReaderRegion.ReadRegions().Count();
             cbbTop.DataSource = new ComboData[]

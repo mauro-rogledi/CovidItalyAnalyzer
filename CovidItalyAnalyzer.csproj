@@ -110,6 +110,7 @@
       <DependentUpon>mainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Library\CartesianChartCountyManager.cs" />
+    <Compile Include="Library\DataReader.cs" />
     <Compile Include="Library\Externders.cs" />
     <Compile Include="Library\Crypting.cs" />
     <Compile Include="Library\DataReaderPeople.cs" />

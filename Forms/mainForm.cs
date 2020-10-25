@@ -13,60 +13,63 @@ namespace CovidItalyAnalyzer.Forms
         public mainForm()
         {
             SettingManager.ReadData();
-            if (SettingManager.FolderData != "")
-            {
-                DataReaderRegion.ReadData(SettingManager.FolderData);
-                DataReaderCounty.ReadData(SettingManager.FolderData);
-
-            }
             InitializeComponent();
+
+            if (DataReader.ReadData())
+                InitializeControls();
+
+            btnRefresh.Enabled = SettingManager.UseGitHub;
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
             var setForm = new settingsForm();
             setForm.ShowDialog(this);
+
+            btnRefresh.Enabled = SettingManager.UseGitHub;
         }
 
         private async void bntRefresh_Click(object sender, EventArgs e)
         {
-            if (SettingManager.FolderData == "")
-                return;
-
             btnRefresh.Enabled = false;
-
-            (bool result, string message) gitResult;
-
             lblStatus.Text = Properties.Resources.DownloadingData;
-            if (Directory.Exists(Path.Combine(SettingManager.FolderData, "dati-json")))
-                gitResult = await GitManager.GitPull();
-            else
-                gitResult = await GitManager.GitClone();
 
-            lblStatus.Text.Clear();
-
-            if (gitResult.result)
-            {
-                DataReaderRegion.ReadData(SettingManager.FolderData);
-                DataReaderCounty.ReadData(SettingManager.FolderData);
-
-                pieControl1.RefreshData();
-                pieControl2.RefreshData();
-                pieControl3.RefreshData();
-                pieControl4.RefreshData();
-                cartesianChartRegionControl1.RefreshData();
-                cartesianChartRegionControl2.RefreshData();
-                cartesianChartCountyControl1.RefreshData();
-                cartesianChartCountyControl2.RefreshData();
-
-                regionDataControl1.RefreshData();
-                
-                lblStatus.Text.Clear();
-            }
-            else
-                lblStatus.Text = gitResult.message;
-
+            var (fromClone, message) = await DataReader.RefreshData();
+            lblStatus.Text = message;
             btnRefresh.Enabled = true;
+
+            if (fromClone)
+                InitializeControls();
+
+            RefreshCharts();
+        }
+
+        private void RefreshCharts()
+        {
+            pieControl1.RefreshData();
+            pieControl2.RefreshData();
+            pieControl3.RefreshData();
+            pieControl4.RefreshData();
+            cartesianChartRegionControl1.RefreshData();
+            cartesianChartRegionControl2.RefreshData();
+            cartesianChartCountyControl1.RefreshData();
+            cartesianChartCountyControl2.RefreshData();
+
+            regionDataControl1.InitializeCombo();
+        }
+
+        private void InitializeControls()
+        {
+            pieControl1.InitializeControl();
+            pieControl2.InitializeControl();
+            pieControl3.InitializeControl();
+            pieControl4.InitializeControl();
+            cartesianChartRegionControl1.InitializeControls();
+            cartesianChartRegionControl2.InitializeControls();
+            cartesianChartCountyControl1.InitializeControls();
+            cartesianChartCountyControl2.InitializeControls();
+
+            regionDataControl1.InitializeControls();
         }
     }
 }
