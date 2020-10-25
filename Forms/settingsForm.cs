@@ -20,6 +20,14 @@ namespace CovidItalyAnalyzer.Forms
         {
             InitializeComponent();
             ReadDataFromSettings();
+            EnableControls();
+        }
+
+        private void EnableControls()
+        {
+            txtUsername.Enabled = cbbUseGitHub.Checked;
+            txtPassword.Enabled = cbbUseGitHub.Checked;
+            txtEmail.Enabled = cbbUseGitHub.Checked;
         }
 
         private void ReadDataFromSettings()
@@ -55,9 +63,9 @@ namespace CovidItalyAnalyzer.Forms
             this.Close();
         }
 
-        private void btnSettings_Click(object sender, EventArgs e)
+        private void cbbUseGitHub_CheckedChanged(object sender, EventArgs e)
         {
-
+            EnableControls();
         }
     }
 }

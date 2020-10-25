@@ -27,6 +27,8 @@ namespace CovidItalyAnalyzer.Library
 
         {
             string fileName = Path.Combine(folderName, "dati-json\\dpc-covid19-ita-province.json");
+            if (!File.Exists(fileName))
+                return;
             CountyDatas = Newtonsoft.Json.JsonConvert.DeserializeObject<List<CountyData>>(File.ReadAllText(fileName));
         }
 
@@ -58,7 +60,7 @@ namespace CovidItalyAnalyzer.Library
 
         private static void ReadItalyCounties()
         {
-            italyCounties = CountyDatas
+            italyCounties = CountyDatas?
                 .OrderBy(d => d.codice_provincia)
                 .Distinct(new CountyCompare())
                 .Aggregate<CountyData, List<ItalyCounty>>(

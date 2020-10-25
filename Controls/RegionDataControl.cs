@@ -40,8 +40,7 @@ namespace CovidItalyAnalyzer.Controls
 
         private void RefreshChart()
         {
-            var selected = cbbRegion.SelectedItem as ComboData;
-            if (selected != null)
+            if (cbbRegion.SelectedItem is ComboData selected)
                 dgwRegionData.DataSource = DataReaderRegion.ReadRegionData(selected.value).ToList();
         }
 

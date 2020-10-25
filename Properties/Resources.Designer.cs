@@ -160,6 +160,42 @@ namespace CovidItalyAnalyzer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Extracting data.
+        /// </summary>
+        internal static string DownloadingData {
+            get {
+                return ResourceManager.GetString("DownloadingData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attention: There is a conflict.
+        /// </summary>
+        internal static string GitConflict {
+            get {
+                return ResourceManager.GetString("GitConflict", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tha data is now updated.
+        /// </summary>
+        internal static string GitFastForward {
+            get {
+                return ResourceManager.GetString("GitFastForward", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The data is already up to date.
+        /// </summary>
+        internal static string GitUpToDate {
+            get {
+                return ResourceManager.GetString("GitUpToDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap icons8_folder_24 {

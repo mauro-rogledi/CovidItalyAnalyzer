@@ -30,10 +30,12 @@ namespace CovidItalyAnalyzer.Controls
 
         private void InitializeChart()
         {
-            var regions = DataReaderRegion.ReadRegions()
-                .Select(r => new ComboData() { value = r.codice_regione, display = r.denominazione_regione }).ToArray();
+            cbbRegion.Items.AddRange(
+                    DataReaderRegion.ReadRegions()
+                        .Select(r => new ComboData() { value = r.codice_regione, display = r.denominazione_regione })
+                        .ToArray()
+                    );
 
-            cbbRegion.Items.AddRange(regions);
             chartManager = new CartesianChartRegionManager(cartesianChart)
             {
                 Region = () => cbbChart.SelectedItem as ComboData
@@ -49,10 +51,8 @@ namespace CovidItalyAnalyzer.Controls
 
         private void RefreshChart()
         {
-            var selected = cbbRegion.SelectedItem as ComboData;
-            var chart = cbbChart.Text;
-            if (selected != null && chart != "")
-                chartManager.SetChart(chart, selected.value, selected.display);
+            if (cbbRegion.SelectedItem is ComboData selected && !cbbChart.Text.IsEmpty())
+                chartManager.SetChart(cbbChart.Text, selected.value, selected.display);
         }
 
         internal void RefreshData()

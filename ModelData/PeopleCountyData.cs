@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CovidItalyAnalyzer.ModelData
+﻿namespace CovidItalyAnalyzer.ModelData
 {
     public class PeopleCountyData
     {
@@ -13,7 +7,6 @@ namespace CovidItalyAnalyzer.ModelData
         public int codice_provincia { get; set; }
         public string denominazione_provincia { get; set; }
         public string sigla_provincia { get; set; }
-
         public float popolazione { get; set; }
     }
 

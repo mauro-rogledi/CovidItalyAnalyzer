@@ -1,21 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Configuration;
-using System.Net.NetworkInformation;
-using System.Data;
 
 namespace CovidItalyAnalyzer.Library
 {
     public static class SettingManager
     {
-        const string folderdata = "Folderdata";
-        const string username = "username";
-        const string password = "password";
-        const string email = "email";
-        const string usegithub = "usegihub";
+        private const string folderdata = "Folderdata";
+        private const string username = "username";
+        private const string password = "password";
+        private const string email = "email";
+        private const string usegithub = "usegihub";
 
         public static string FolderData { get; set; }
 
@@ -58,6 +52,7 @@ namespace CovidItalyAnalyzer.Library
                 return "";
             }
         }
+
         private static void AddUpdateAppSettings(string key, string value)
         {
             try

@@ -110,6 +110,7 @@
             this.cbbUseGitHub.Name = "cbbUseGitHub";
             this.cbbUseGitHub.UseSelectable = true;
             this.cbbUseGitHub.UseStyleColors = true;
+            this.cbbUseGitHub.CheckedChanged += new System.EventHandler(this.cbbUseGitHub_CheckedChanged);
             // 
             // metroLabel2
             // 
@@ -143,6 +144,7 @@
             this.txtUsername.MaxLength = 32767;
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.PasswordChar = '\0';
+            this.txtUsername.PromptText = "insert username";
             this.txtUsername.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtUsername.SelectedText = "";
             this.txtUsername.SelectionLength = 0;
@@ -174,6 +176,7 @@
             this.txtPassword.MaxLength = 32767;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '●';
+            this.txtPassword.PromptText = "insert password";
             this.txtPassword.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtPassword.SelectedText = "";
             this.txtPassword.SelectionLength = 0;
@@ -212,6 +215,7 @@
             this.txtEmail.MaxLength = 32767;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.PasswordChar = '\0';
+            this.txtEmail.PromptText = "insert email";
             this.txtEmail.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtEmail.SelectedText = "";
             this.txtEmail.SelectionLength = 0;

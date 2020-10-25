@@ -20,7 +20,7 @@ namespace CovidItalyAnalyzer.Library
 
         private static string folder = string.Empty;
 
-        public static bool HasReadData { get => folder != string.Empty; }
+        public static bool HasReadData { get => folder != string.Empty && Directory.Exists(Path.Combine(folder, "dati-json")); }
 
         internal static void ReadData(string folderName)
         {
@@ -61,6 +61,8 @@ namespace CovidItalyAnalyzer.Library
         private static void ReadRegionData(string folderName)
         {
             string fileName = Path.Combine(folderName, "dati-json\\dpc-covid19-ita-regioni.json");
+            if (!File.Exists(fileName)) 
+                return;
             var allData = Newtonsoft.Json.JsonConvert.DeserializeObject<List<RegionData>>(File.ReadAllText(fileName));
             ReadItalyRegions(allData);
 

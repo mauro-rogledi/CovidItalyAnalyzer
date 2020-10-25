@@ -7,13 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Markup;
 
 namespace CovidItalyAnalyzer.Library
 {
     public static class GitManager
     {
 
-        public static bool GitPull()
+        public static async Task<(bool result, string message)> GitPull()
         {
             using (var repo = new Repository(SettingManager.FolderData))
             {
@@ -33,18 +34,50 @@ namespace CovidItalyAnalyzer.Library
                     new Identity(SettingManager.UserName, SettingManager.Email), DateTimeOffset.Now);
 
                 // Pull
-                var result = Commands.Pull(repo, signature, options);
-                MessageBox.Show(result.Status.ToString());
-                return result.Status == MergeStatus.FastForward;
+                return await Task.Run(() =>
+                {
+                    try
+                    {
+                        var result = Commands.Pull(repo, signature, options);
+                        switch (result.Status)
+                        {
+                            case MergeStatus.UpToDate:
+                                MessageBox.Show(Properties.Resources.GitUpToDate);
+                                break;
+                            case MergeStatus.Conflicts:
+                                MessageBox.Show(Properties.Resources.GitConflict);
+                                break;
+                            case MergeStatus.FastForward:
+                                MessageBox.Show(Properties.Resources.GitFastForward);
+                                break;
+                        }
+                        return (result.Status == MergeStatus.FastForward, "");
+                    }
+                    catch (Exception e)
+                    {
+                        return (false, e.Message);
+                    }
+
+                });
             }
         }
 
-        public static bool GitClone()
+        public static async Task<(bool result, string message)> GitClone()
         {
             var co = new CloneOptions();
             co.CredentialsProvider = (_url, _user, _cred) => new UsernamePasswordCredentials { Username = SettingManager.UserName, Password = SettingManager.Password };
-            var result = Repository.Clone("https://github.com/pcm-dpc/COVID-19.git", SettingManager.FolderData, co);
-            return true;
+            return await Task.Run(() =>
+            {
+                try
+                {
+                    var result = Repository.Clone("https://github.com/pcm-dpc/COVID-19.git", SettingManager.FolderData, co);
+                }
+                catch (Exception e)
+                {
+                    return (false, e.Message);
+                }
+                return (true, "");
+            });
         }
     }
 }

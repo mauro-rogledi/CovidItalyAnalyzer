@@ -19,7 +19,6 @@ namespace CovidItalyAnalyzer.Forms
                 DataReaderCounty.ReadData(SettingManager.FolderData);
 
             }
-
             InitializeComponent();
         }
 
@@ -29,19 +28,24 @@ namespace CovidItalyAnalyzer.Forms
             setForm.ShowDialog(this);
         }
 
-        private void bntRefresh_Click(object sender, EventArgs e)
+        private async void bntRefresh_Click(object sender, EventArgs e)
         {
             if (SettingManager.FolderData == "")
                 return;
 
-            var hasToRefresh = false;
+            btnRefresh.Enabled = false;
 
-            if (Directory.GetDirectories(SettingManager.FolderData).Count() == 0)
-                hasToRefresh = GitManager.GitClone();
+            (bool result, string message) gitResult;
+
+            lblStatus.Text = Properties.Resources.DownloadingData;
+            if (Directory.Exists(Path.Combine(SettingManager.FolderData, "dati-json")))
+                gitResult = await GitManager.GitPull();
             else
-                hasToRefresh = GitManager.GitPull();
+                gitResult = await GitManager.GitClone();
 
-            if (hasToRefresh)
+            lblStatus.Text.Clear();
+
+            if (gitResult.result)
             {
                 DataReaderRegion.ReadData(SettingManager.FolderData);
                 DataReaderCounty.ReadData(SettingManager.FolderData);
@@ -56,7 +60,13 @@ namespace CovidItalyAnalyzer.Forms
                 cartesianChartCountyControl2.RefreshData();
 
                 regionDataControl1.RefreshData();
+                
+                lblStatus.Text.Clear();
             }
+            else
+                lblStatus.Text = gitResult.message;
+
+            btnRefresh.Enabled = true;
         }
     }
 }

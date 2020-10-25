@@ -150,6 +150,18 @@
   <data name="DeadsPerinhabitants" xml:space="preserve">
     <value>Deceduti per 100.000 abitanti</value>
   </data>
+  <data name="DownloadingData" xml:space="preserve">
+    <value>Scaricamento dati</value>
+  </data>
+  <data name="GitConflict" xml:space="preserve">
+    <value>Attenzione è presente un conflitto nei dati</value>
+  </data>
+  <data name="GitFastForward" xml:space="preserve">
+    <value>I dati sono ora aggiornati</value>
+  </data>
+  <data name="GitUpToDate" xml:space="preserve">
+    <value>I dati sono già aggiornati</value>
+  </data>
   <data name="IntensiveCare" xml:space="preserve">
     <value>Terapia intensiva</value>
   </data>
