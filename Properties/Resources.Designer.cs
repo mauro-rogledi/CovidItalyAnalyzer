@@ -196,6 +196,15 @@ namespace CovidItalyAnalyzer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hospital.
+        /// </summary>
+        internal static string Hospital {
+            get {
+                return ResourceManager.GetString("Hospital", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap icons8_folder_24 {

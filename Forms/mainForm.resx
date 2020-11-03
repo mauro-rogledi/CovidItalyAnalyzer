@@ -579,78 +579,6 @@
   <data name="&gt;&gt;spcRegion.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;tpgItaly.Name" xml:space="preserve">
-    <value>tpgItaly</value>
-  </data>
-  <data name="&gt;&gt;tpgItaly.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tpgItaly.Parent" xml:space="preserve">
-    <value>metroTabControl1</value>
-  </data>
-  <data name="&gt;&gt;tpgItaly.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;tpgRegions.Name" xml:space="preserve">
-    <value>tpgRegions</value>
-  </data>
-  <data name="&gt;&gt;tpgRegions.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tpgRegions.Parent" xml:space="preserve">
-    <value>metroTabControl1</value>
-  </data>
-  <data name="&gt;&gt;tpgRegions.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;tpgCounty.Name" xml:space="preserve">
-    <value>tpgCounty</value>
-  </data>
-  <data name="&gt;&gt;tpgCounty.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tpgCounty.Parent" xml:space="preserve">
-    <value>metroTabControl1</value>
-  </data>
-  <data name="&gt;&gt;tpgCounty.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;tpgTable.Name" xml:space="preserve">
-    <value>tpgTable</value>
-  </data>
-  <data name="&gt;&gt;tpgTable.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tpgTable.Parent" xml:space="preserve">
-    <value>metroTabControl1</value>
-  </data>
-  <data name="&gt;&gt;tpgTable.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="metroTabControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="metroTabControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 60</value>
-  </data>
-  <data name="metroTabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1177, 479</value>
-  </data>
-  <data name="metroTabControl1.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;metroTabControl1.Name" xml:space="preserve">
-    <value>metroTabControl1</value>
-  </data>
-  <data name="&gt;&gt;metroTabControl1.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroTabControl, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;metroTabControl1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;metroTabControl1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="tpgItaly.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 38</value>
   </data>
@@ -723,54 +651,6 @@
   <data name="&gt;&gt;tpgCounty.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;regionDataControl1.Name" xml:space="preserve">
-    <value>regionDataControl1</value>
-  </data>
-  <data name="&gt;&gt;regionDataControl1.Type" xml:space="preserve">
-    <value>CovidItalyAnalyzer.Controls.RegionDataControl, CovidItalyAnalyzer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;regionDataControl1.Parent" xml:space="preserve">
-    <value>tpgTable</value>
-  </data>
-  <data name="&gt;&gt;regionDataControl1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;dgwRegionData.Name" xml:space="preserve">
-    <value>dgwRegionData</value>
-  </data>
-  <data name="&gt;&gt;dgwRegionData.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dgwRegionData.Parent" xml:space="preserve">
-    <value>tpgTable</value>
-  </data>
-  <data name="&gt;&gt;dgwRegionData.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tpgTable.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 38</value>
-  </data>
-  <data name="tpgTable.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1169, 437</value>
-  </data>
-  <data name="tpgTable.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="tpgTable.Text" xml:space="preserve">
-    <value>Region Data</value>
-  </data>
-  <data name="&gt;&gt;tpgTable.Name" xml:space="preserve">
-    <value>tpgTable</value>
-  </data>
-  <data name="&gt;&gt;tpgTable.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tpgTable.Parent" xml:space="preserve">
-    <value>metroTabControl1</value>
-  </data>
-  <data name="&gt;&gt;tpgTable.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="regionDataControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -790,7 +670,7 @@
     <value>CovidItalyAnalyzer.Controls.RegionDataControl, CovidItalyAnalyzer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;regionDataControl1.Parent" xml:space="preserve">
-    <value>tpgTable</value>
+    <value>tpgTableRegion</value>
   </data>
   <data name="&gt;&gt;regionDataControl1.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -814,9 +694,105 @@
     <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;dgwRegionData.Parent" xml:space="preserve">
-    <value>tpgTable</value>
+    <value>tpgTableRegion</value>
   </data>
   <data name="&gt;&gt;dgwRegionData.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tpgTableRegion.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 38</value>
+  </data>
+  <data name="tpgTableRegion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1169, 437</value>
+  </data>
+  <data name="tpgTableRegion.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="tpgTableRegion.Text" xml:space="preserve">
+    <value>Region Data</value>
+  </data>
+  <data name="&gt;&gt;tpgTableRegion.Name" xml:space="preserve">
+    <value>tpgTableRegion</value>
+  </data>
+  <data name="&gt;&gt;tpgTableRegion.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tpgTableRegion.Parent" xml:space="preserve">
+    <value>metroTabControl1</value>
+  </data>
+  <data name="&gt;&gt;tpgTableRegion.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="countyDataControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="countyDataControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="countyDataControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1169, 437</value>
+  </data>
+  <data name="countyDataControl1.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;countyDataControl1.Name" xml:space="preserve">
+    <value>countyDataControl1</value>
+  </data>
+  <data name="&gt;&gt;countyDataControl1.Type" xml:space="preserve">
+    <value>CovidItalyAnalyzer.Controls.CountyDataControl, CovidItalyAnalyzer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;countyDataControl1.Parent" xml:space="preserve">
+    <value>tpgTableCounty</value>
+  </data>
+  <data name="&gt;&gt;countyDataControl1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tpgTableCounty.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 38</value>
+  </data>
+  <data name="tpgTableCounty.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1169, 437</value>
+  </data>
+  <data name="tpgTableCounty.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="tpgTableCounty.Text" xml:space="preserve">
+    <value>County Data</value>
+  </data>
+  <data name="&gt;&gt;tpgTableCounty.Name" xml:space="preserve">
+    <value>tpgTableCounty</value>
+  </data>
+  <data name="&gt;&gt;tpgTableCounty.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tpgTableCounty.Parent" xml:space="preserve">
+    <value>metroTabControl1</value>
+  </data>
+  <data name="&gt;&gt;tpgTableCounty.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="metroTabControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="metroTabControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 60</value>
+  </data>
+  <data name="metroTabControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1177, 479</value>
+  </data>
+  <data name="metroTabControl1.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;metroTabControl1.Name" xml:space="preserve">
+    <value>metroTabControl1</value>
+  </data>
+  <data name="&gt;&gt;metroTabControl1.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroTabControl, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;metroTabControl1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;metroTabControl1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="btnRefresh.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
@@ -903,6 +879,9 @@
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Verdana, 8.25pt</value>
   </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="$this.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>23, 60, 23, 20</value>
   </data>
@@ -913,7 +892,7 @@
     <value>Covid data analyzer</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>mainForm</value>
+    <value>MainForm</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>MetroFramework.Forms.MetroForm, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>

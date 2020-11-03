@@ -43,6 +43,51 @@ namespace CovidItalyAnalyzer.Library
             ChartAvailable.Add(Properties.Resources.DeadsPerinhabitants, () => FillChartInhabitants(Properties.Resources.DeadsPerinhabitants, p => p.nuovi_deceduti));
             ChartAvailable.Add(Properties.Resources.SwabsInRange, () => FillChart(Properties.Resources.SwabsInRange, p => p.nuovi_tamponi));
             ChartAvailable.Add(Properties.Resources.SwabsPerinhabitants, () => FillChartInhabitants(Properties.Resources.SwabsPerinhabitants, p => p.nuovi_tamponi));
+            ChartAvailable.Add("Casi e tamponi", () => FillChartCasesSwab());
+        }
+
+        private void FillChartCasesSwab()
+        {
+            var dateFrom = FromDate?.Invoke() ?? DateTime.Today;
+            var dateTo = ToDate?.Invoke() ?? DateTime.Today;
+            var top = Top?.Invoke()?.value ?? 5;
+            var title = "tamponi casi";
+
+            var swab = DataExtractorRegion.FillRangeData(dateFrom, dateTo, 100, p => p.nuovi_tamponi).OrderBy(p => p.lbl);
+            var cases = DataExtractorRegion.FillRangeData(dateFrom, dateTo, 100, p => p.nuovi_positivi).OrderBy(p => p.lbl);
+
+            var data = cases.Zip(swab, (c, s) => new ReturnData()
+            {
+                lbl = c.lbl,
+                data = c.data,
+                value = c.value / s.value
+            })
+            .OrderByDescending(o => o.value)
+            .Take(top)
+            .ToList();
+
+
+            var Title = dateFrom.Date == dateTo.Date
+                ? $"{title} {dateFrom.Date.ToShortDateString()}"
+                : $"{title} {Properties.Resources.BetweenDate} {dateFrom.Date.ToString("dd/MM/yy")} {{Properties.Resources.And}} {dateTo.Date.ToString("dd/MM/yy")}";
+
+            Func<ChartPoint, string> labelPoint = chartPoint =>
+                string.Format("{0}", chartPoint.Y.ToString("P2"));
+
+            var series = new SeriesCollection();
+
+            foreach (var region in data)
+                series.Add(
+                    new PieSeries()
+                    {
+                        Title = region.lbl,
+                        Values = new ChartValues<float> { region.value },
+                        DataLabels = true,
+                        LabelPoint = labelPoint
+                    });
+
+            this.chart.Series = series;
+            this.chart.LegendLocation = LegendLocation.Right;
         }
 
         public string[] GetChartAvailable()

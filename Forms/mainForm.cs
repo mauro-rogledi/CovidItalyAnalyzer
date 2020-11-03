@@ -57,6 +57,7 @@ namespace CovidItalyAnalyzer.Forms
             cartesianChartCountyControl2.RefreshData();
 
             regionDataControl1.InitializeCombo();
+            countyDataControl1.InitializeCombo();
         }
 
         private void InitializeControls()
@@ -71,6 +72,7 @@ namespace CovidItalyAnalyzer.Forms
             cartesianChartCountyControl2.InitializeControls();
 
             regionDataControl1.InitializeControls();
+            countyDataControl1.InitializeControls();
         }
     }
 }

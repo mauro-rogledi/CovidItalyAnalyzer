@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,5 +18,8 @@ namespace CovidItalyAnalyzer.ModelData
         public string denominazione_provincia { get; set; }
         public string sigla_provincia { get; set; }
         public float totale_casi  { get; set; }
+
+        [JsonIgnore]
+        public float nuovi_positivi { get; set; }
     }
 }

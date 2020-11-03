@@ -38,7 +38,10 @@ namespace CovidItalyAnalyzer.Library
             ChartAvailable.Add(Properties.Resources.DailyCasesSwabs, (int r, string s) => FillChartWithDailySwabCases(r, s));
             ChartAvailable.Add(Properties.Resources.DailyDeads, (int r, string s) => FillChartWitDailyDeads(r, s));
             ChartAvailable.Add(Properties.Resources.IntensiveCare, (int r, string s) => FillChartWitIntensiveCare(r, s));
-            
+            ChartAvailable.Add(Properties.Resources.Hospital, (int r, string s) => FillChartWitHospital(r, s));
+
+
+
         }
 
         public string[] GetChartAvailable()
@@ -55,7 +58,12 @@ namespace CovidItalyAnalyzer.Library
 
         private void FillChartWitIntensiveCare(int region, string regionName)
         {
-            FillChartWithLinearSeries(region, regionName, Properties.Resources.IntensiveCare, Properties.Resources.Deads, DataExtractorRegion.FillIntensiveCare);
+            FillChartWithLinearSeries(region, regionName, Properties.Resources.IntensiveCare, Properties.Resources.IntensiveCare, DataExtractorRegion.FillIntensiveCare);
+        }
+
+        private void FillChartWitHospital(int region, string regionName)
+        {
+            FillChartWithLinearSeries(region, regionName, Properties.Resources.Hospital, Properties.Resources.Hospital, DataExtractorRegion.FillHospital);
         }
 
         private void FillChartWitDailyDeads(int region, string regionName)
@@ -80,12 +88,12 @@ namespace CovidItalyAnalyzer.Library
 
         public void FillChartWithWeeklyCases(int region, string regionName)
         {
-            FillChartWithColumnSeries(region, regionName, Properties.Resources.DailyCases, Properties.Resources.Cases, DataExtractorRegion.FillWeeklyCases);
+            FillChartWithColumnSeries(region, regionName, Properties.Resources.WeeklyCases, Properties.Resources.Cases, DataExtractorRegion.FillWeeklyCases);
         }
 
         public void FillChartWithWeeklySwab(int region, string regionName)
         {
-            FillChartWithColumnSeries(region, regionName, Properties.Resources.WeeklySwabs, Properties.Resources.Swabs, DataExtractorRegion.FillWeeklyCases);
+            FillChartWithColumnSeries(region, regionName, Properties.Resources.WeeklySwabs, Properties.Resources.Swabs, DataExtractorRegion.FillWeeklySwab);
         }
 
         public void FillChartWithWeeklySwabCases(int region, string regionName)
@@ -223,7 +231,7 @@ namespace CovidItalyAnalyzer.Library
             var data = func.Invoke(region);
             var columnSeries = new ColumnSeries
             {
-                Title = $"{Properties.Resources.WeeklySwabs} {regionName}",
+                Title = $"{titleSeries} {regionName}",
                 Values = new ChartValues<float>(data.Select(s => s.value)),
                 PointGeometry = DefaultGeometries.None,
                 DataLabels = true,

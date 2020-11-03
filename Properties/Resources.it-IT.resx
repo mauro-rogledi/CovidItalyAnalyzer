@@ -162,6 +162,9 @@
   <data name="GitUpToDate" xml:space="preserve">
     <value>I dati sono già aggiornati</value>
   </data>
+  <data name="Hospital" xml:space="preserve">
+    <value>Ospedalizzati</value>
+  </data>
   <data name="IntensiveCare" xml:space="preserve">
     <value>Terapia intensiva</value>
   </data>

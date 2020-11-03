@@ -26,6 +26,11 @@ namespace CovidItalyAnalyzer.Library
             return FillRegionWithFunction(region, f => f.terapia_intensiva);
         }
 
+        public static List<ReturnData> FillHospital(int region)
+        {
+            return FillRegionWithFunction(region, f => f.totale_ospedalizzati);
+        }
+
         public static List<ReturnData> FillDailyDeads(int region)
         {
             return FillRegionWithFunction(region, f => f.nuovi_deceduti);
