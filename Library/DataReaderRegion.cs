@@ -71,6 +71,7 @@ namespace CovidItalyAnalyzer.Library
             foreach (var region in italyRegions)
             {
                 var data = allData
+                    .Distinct(new RegionDateCompare())
                     .Where(r => r.codice_regione == region.codice_regione)
                     .OrderBy(o => o.data)
                     .ToList();
@@ -113,6 +114,31 @@ namespace CovidItalyAnalyzer.Library
 
             //Check whether the products' properties are equal.
             return x.denominazione_regione == y.denominazione_regione && x.codice_regione == y.codice_regione;
+        }
+
+        public int GetHashCode(RegionData obj)
+        {
+            //Check whether the object is null
+            if (Object.ReferenceEquals(obj, null)) return 0;
+
+            //Get hash code for the Name field if it is not null.
+            return obj.denominazione_regione.GetHashCode() ^ obj.codice_regione.GetHashCode();
+        }
+    }
+
+    public class RegionDateCompare : IEqualityComparer<RegionData>
+    {
+        public bool Equals(RegionData x, RegionData y)
+        {
+            //Check whether the compared objects reference the same data.
+            if (Object.ReferenceEquals(x, y)) return true;
+
+            //Check whether any of the compared objects is null.
+            if (Object.ReferenceEquals(x, null) || Object.ReferenceEquals(y, null))
+                return false;
+
+            //Check whether the products' properties are equal.
+            return x.denominazione_regione == y.denominazione_regione && x.codice_regione == y.codice_regione && x.data == y.data;
         }
 
         public int GetHashCode(RegionData obj)

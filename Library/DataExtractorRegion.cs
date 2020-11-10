@@ -183,7 +183,7 @@ namespace CovidItalyAnalyzer.Library
             {
                 lbl = c.lbl,
                 data = c.data,
-                value = s.value != 0 ? c.value / s.value : 0F
+                value = s.value != 0 && s.value > c.value ? c.value / s.value : 0F
             })
             .ToList();
         }

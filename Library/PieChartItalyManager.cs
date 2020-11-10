@@ -43,7 +43,7 @@ namespace CovidItalyAnalyzer.Library
             ChartAvailable.Add(Properties.Resources.DeadsPerinhabitants, () => FillChartInhabitants(Properties.Resources.DeadsPerinhabitants, p => p.nuovi_deceduti));
             ChartAvailable.Add(Properties.Resources.SwabsInRange, () => FillChart(Properties.Resources.SwabsInRange, p => p.nuovi_tamponi));
             ChartAvailable.Add(Properties.Resources.SwabsPerinhabitants, () => FillChartInhabitants(Properties.Resources.SwabsPerinhabitants, p => p.nuovi_tamponi));
-            ChartAvailable.Add("Casi e tamponi", () => FillChartCasesSwab());
+            ChartAvailable.Add(Properties.Resources.RelationshipCasesSwabs, () => FillChartCasesSwab());
         }
 
         private void FillChartCasesSwab()
@@ -51,7 +51,7 @@ namespace CovidItalyAnalyzer.Library
             var dateFrom = FromDate?.Invoke() ?? DateTime.Today;
             var dateTo = ToDate?.Invoke() ?? DateTime.Today;
             var top = Top?.Invoke()?.value ?? 5;
-            var title = "tamponi casi";
+            var title = Properties.Resources.RelationshipCasesSwabs;
 
             var swab = DataExtractorRegion.FillRangeData(dateFrom, dateTo, 100, p => p.nuovi_tamponi).OrderBy(p => p.lbl);
             var cases = DataExtractorRegion.FillRangeData(dateFrom, dateTo, 100, p => p.nuovi_positivi).OrderBy(p => p.lbl);
@@ -111,7 +111,7 @@ namespace CovidItalyAnalyzer.Library
 
             Title = dateFrom.Date == dateTo.Date
                     ? $"{title} {dateFrom.Date.ToShortDateString()}"
-                    : $"{title} {Properties.Resources.BetweenDate} {dateFrom.Date.ToString("dd/MM/yy")} {{Properties.Resources.And}} {dateTo.Date.ToString("dd/MM/yy")}";
+                    : $"{title} {Properties.Resources.BetweenDate} {dateFrom.Date:dd/MM/yy} {{Properties.Resources.And}} {dateTo.Date:dd/MM/yy)}";
 
             Func<ChartPoint, string> labelPoint = chartPoint =>
                 string.Format("{0}", chartPoint.Y.ToString("N0"));
@@ -141,7 +141,7 @@ namespace CovidItalyAnalyzer.Library
 
             Title = dateFrom.Date == dateTo.Date
                     ? $"{title} {dateFrom.Date.ToShortDateString()}"
-                    : $"{title} {Properties.Resources.BetweenDate} {dateFrom.Date.ToString("dd/MM/yy")} {Properties.Resources.And} {dateTo.Date.ToString("dd/MM/yy")}";
+                    : $"{title} {Properties.Resources.BetweenDate} {dateFrom.Date:dd/MM/yy} {Properties.Resources.And} {dateTo.Date:dd/MM/yy}";
 
             Func<ChartPoint, string> labelPoint = chartPoint =>
                 string.Format("{0}", chartPoint.Y.ToString("#,##0.##"));

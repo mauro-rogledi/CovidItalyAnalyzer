@@ -267,7 +267,8 @@ namespace CovidItalyAnalyzer.Library
             this.chart.AxisY.Add(new Axis
             {
                 Title = titleY,
-                LabelFormatter = value => value.ToString("N0")
+                LabelFormatter = value => value.ToString("N0"),
+                MinValue = 0
             });
 
             this.chart.LegendLocation = LegendLocation.Top;

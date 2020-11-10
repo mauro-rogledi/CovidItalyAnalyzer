@@ -36,6 +36,7 @@ namespace CovidItalyAnalyzer.Library
             foreach (var county in italyCounties)
             {
                 var data = allData
+                    .Distinct(new CountyDateCompare())
                     .Where(r => r.codice_regione == county.codice_regione && r.codice_provincia == county.codice_provincia)
                     .OrderBy(o => o.data)
                     .ToList();
@@ -94,6 +95,31 @@ namespace CovidItalyAnalyzer.Library
                         });
                         return reg;
                     });
+        }
+    }
+
+    internal class CountyDateCompare : IEqualityComparer<CountyData>
+    {
+        public bool Equals(CountyData x, CountyData y)
+        {
+            //Check whether the compared objects reference the same data.
+            if (Object.ReferenceEquals(x, y)) return true;
+
+            //Check whether any of the compared objects is null.
+            if (Object.ReferenceEquals(x, null) || Object.ReferenceEquals(y, null))
+                return false;
+
+            //Check whether the products' properties are equal.
+            return x.codice_provincia == y.codice_provincia && x.codice_regione == y.codice_regione && x.data == y.data;
+        }
+
+        public int GetHashCode(CountyData obj)
+        {
+            //Check whether the object is null
+            if (Object.ReferenceEquals(obj, null)) return 0;
+
+            //Get hash code for the Name field if it is not null.
+            return obj.codice_regione.GetHashCode() ^ obj.codice_provincia.GetHashCode() ^ obj.data.GetHashCode();
         }
     }
 }
