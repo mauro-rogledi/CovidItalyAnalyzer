@@ -19,35 +19,16 @@ namespace CovidItalyAnalyzer.Library
             return Directory.Exists(Path.Combine(SettingManager.FolderData, "dati-json"));
         }
 
-        public static async Task<(bool fromClone, string message)> RefreshData()
+        public static async Task RefreshData()
         {
-            (bool ok, string message) gitResult;
-            bool fromClone = false;
-
-            if (HasReadData)
-                gitResult = await GitManager.GitPull();
-            else
-            {
-                gitResult = await GitManager.GitClone();
-                fromClone = true;
-            }
-
-            if (gitResult.ok)
-            {
-                DataReaderRegion.ReadData(SettingManager.FolderData);
-                DataReaderCounty.ReadData(SettingManager.FolderData);
-            }
-
-            return (fromClone, gitResult.message);
+            await DataReaderRegion.RefreshData(SettingManager.KeepACopy, SettingManager.FolderData);
+            await DataReaderCounty.RefreshData(SettingManager.KeepACopy,SettingManager.FolderData);
         }
 
-        public static bool ReadData()
+        public async static Task<bool> ReadData()
         {
-            if (!HasReadData)
-                return false;
-
-            DataReaderRegion.ReadData(SettingManager.FolderData);
-            DataReaderCounty.ReadData(SettingManager.FolderData);
+            await DataReaderRegion.ReadData(SettingManager.KeepACopy, SettingManager.FolderData);
+            await DataReaderCounty.ReadData(SettingManager.KeepACopy, SettingManager.FolderData);
 
             return true;
         }

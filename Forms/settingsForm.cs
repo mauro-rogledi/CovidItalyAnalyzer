@@ -25,18 +25,13 @@ namespace CovidItalyAnalyzer.Forms
 
         private void EnableControls()
         {
-            txtUsername.Enabled = cbbUseGitHub.Checked;
-            txtPassword.Enabled = cbbUseGitHub.Checked;
-            txtEmail.Enabled = cbbUseGitHub.Checked;
+            txtFolder.Enabled = cbbKeepaCopy.Checked;
         }
 
         private void ReadDataFromSettings()
         {
             txtFolder.Text = SettingManager.FolderData;
-            cbbUseGitHub.Checked = SettingManager.UseGitHub;
-            txtUsername.Text = SettingManager.UserName;
-            txtPassword.Text = SettingManager.Password;
-            txtEmail.Text = SettingManager.Email;
+            cbbKeepaCopy.Checked = SettingManager.KeepACopy;
         }
 
 
@@ -54,10 +49,7 @@ namespace CovidItalyAnalyzer.Forms
         private void btnSave_Click(object sender, EventArgs e)
         {
             SettingManager.FolderData = txtFolder.Text;
-            SettingManager.UseGitHub = cbbUseGitHub.Checked;
-            SettingManager.UserName = txtUsername.Text;
-            SettingManager.Password = txtPassword.Text;
-            SettingManager.Email = txtEmail.Text;
+            SettingManager.KeepACopy = cbbKeepaCopy.Checked;
 
             SettingManager.SaveData();
             this.Close();

@@ -38,7 +38,8 @@ namespace CovidItalyAnalyzer.Controls
                 Top = () => cbbTop.SelectedItem as ComboData
             };
 
-            cbbChart.Items.AddRange(chartManager.GetChartAvailable());
+            var charts = chartManager.GetChartAvailable();
+            cbbChart.Items.AddRange(charts);
         }
 
         private void dttFrom_ValueChanged(object sender, EventArgs e)

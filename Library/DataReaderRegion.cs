@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace CovidItalyAnalyzer.Library
 {
@@ -20,12 +21,30 @@ namespace CovidItalyAnalyzer.Library
 
         private static string folder = string.Empty;
 
-        public static bool HasReadData { get => folder != string.Empty && Directory.Exists(Path.Combine(folder, "dati-json")); }
+        private static readonly string file = "dpc-covid19-ita-regioni.json";
 
-        internal static void ReadData(string folderName)
+        internal static async Task RefreshData(bool keepACopy, string folderData)
+        {
+            await ReadRegionDataFromWeb(keepACopy, file);
+        }
+
+        public static bool HasData { get => folder != string.Empty && File.Exists(Path.Combine(folder, file)); }
+
+        internal static async Task ReadData(bool keepACopy, string folderName)
         {
             folder = folderName;
-            ReadRegionData(folderName);
+            if (keepACopy && HasData)
+                ReadRegionData(folderName);
+            else
+                await ReadRegionDataFromWeb(keepACopy, file);
+        }
+
+        private static async Task ReadRegionDataFromWeb(bool keepACopy, string folderName)
+        {
+            var data = await GitFilePicker.GetFilesAsync(file);
+            DeserializeData(data);
+            if (keepACopy)
+                File.WriteAllText(Path.Combine(folder, file), data);
         }
 
         internal static IOrderedEnumerable<RegionData> ReadRegionData(int region)
@@ -53,17 +72,17 @@ namespace CovidItalyAnalyzer.Library
                 .OrderBy(o => o.denominazione_regione);
         }
 
-        internal static void RefreshDatas()
-        {
-            ReadRegionData(folder);
-        }
-
         private static void ReadRegionData(string folderName)
         {
-            string fileName = Path.Combine(folderName, "dati-json\\dpc-covid19-ita-regioni.json");
-            if (!File.Exists(fileName)) 
+            string fileName = Path.Combine(folderName, file);
+            if (!File.Exists(fileName))
                 return;
-            var allData = Newtonsoft.Json.JsonConvert.DeserializeObject<List<RegionData>>(File.ReadAllText(fileName));
+            DeserializeData(File.ReadAllText(fileName));
+        }
+
+        private static void DeserializeData(string stringdata)
+        {
+            var allData = Newtonsoft.Json.JsonConvert.DeserializeObject<List<RegionData>>(stringdata);
             ReadItalyRegions(allData);
 
             RegionDatas = new List<RegionData>();
@@ -78,15 +97,14 @@ namespace CovidItalyAnalyzer.Library
 
                 RegionDatas.AddRange(
                     data.Select((curr, i) =>
-                        {
-                            curr.nuovi_tamponi = i > 0 ? curr.tamponi - data[i - 1].tamponi : curr.tamponi;
-                            curr.nuovi_deceduti = i > 0 ? curr.deceduti - data[i - 1].deceduti : curr.deceduti;
-                            return curr;
-                        })
+                    {
+                        curr.nuovi_tamponi = i > 0 ? curr.tamponi - data[i - 1].tamponi : curr.tamponi;
+                        curr.nuovi_deceduti = i > 0 ? curr.deceduti - data[i - 1].deceduti : curr.deceduti;
+                        return curr;
+                    })
                 );
             }
         }
-
         private static void ReadItalyRegions(List<RegionData> allData)
         {
             italyRegions = allData

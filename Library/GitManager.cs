@@ -13,8 +13,24 @@ namespace CovidItalyAnalyzer.Library
 {
     public static class GitManager
     {
-
         public static async Task<(bool result, string message)> GitPull()
+        {
+
+            string clonedRepoPath = Repository.Clone
+
+            using (var repo = new Repository(clonedRepoPath))
+            {
+                var masterBranch = repo.Branches["master"];
+                var latestCommit = masterBranch.Tip;
+
+                var blob = latestCommit["path/to/your/file.txt"].Target as Blob;
+
+                Console.WriteLine(blob.GetContentText());
+            }
+
+            return (true, "");
+        }
+        public static async Task<(bool result, string message)> GitPullold()
         {
             using (var repo = new Repository(SettingManager.FolderData))
             {
@@ -28,6 +44,8 @@ namespace CovidItalyAnalyzer.Library
                 //            Username = SettingManager.UserName,
                 //            Password = SettingManager.Password
                 //        });
+
+                https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-regioni.json
 
                 // User information to create a merge commit
                 var signature = new LibGit2Sharp.Signature(

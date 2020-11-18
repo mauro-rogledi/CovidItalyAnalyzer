@@ -150,6 +150,9 @@
   <data name="DeadsPerinhabitants" xml:space="preserve">
     <value>Deceduti per 100.000 abitanti</value>
   </data>
+  <data name="DownloadedData" xml:space="preserve">
+    <value>Dati scaricati</value>
+  </data>
   <data name="DownloadingData" xml:space="preserve">
     <value>Scaricamento dati</value>
   </data>

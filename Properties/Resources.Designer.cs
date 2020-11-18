@@ -160,6 +160,15 @@ namespace CovidItalyAnalyzer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Data downloaded.
+        /// </summary>
+        internal static string DownloadedData {
+            get {
+                return ResourceManager.GetString("DownloadedData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Extracting data.
         /// </summary>
         internal static string DownloadingData {

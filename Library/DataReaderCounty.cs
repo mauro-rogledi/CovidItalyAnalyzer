@@ -4,31 +4,44 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace CovidItalyAnalyzer.Library
 {
-
     public static class DataReaderCounty
     {
         private static List<CountyData> CountyDatas;
         private static List<ItalyCounty> italyCounties;
         private static string folder;
 
-        internal static void ReadData(string folderName)
+        private static readonly string file = "dpc-covid19-ita-province.json";
+        public static bool HasData { get => folder != string.Empty && File.Exists(Path.Combine(folder, file)); }
+
+        internal static async Task ReadData(bool keepACopy, string folderName)
         {
             folder = folderName;
-            ReadCountyData(folderName);
+            if (keepACopy && HasData)
+                ReadCountyData(folder);
+            else
+                await ReadCountyDataFromWeb(keepACopy, file);
         }
 
-        private static void ReadCountyData(string folderName)
-
+        internal static  async Task RefreshData(bool keepACopy, string folderData)
         {
-            string fileName = Path.Combine(folderName, "dati-json\\dpc-covid19-ita-province.json");
-            if (!File.Exists(fileName))
-                return;
-            var allData = Newtonsoft.Json.JsonConvert.DeserializeObject<List<CountyData>>(File.ReadAllText(fileName));
+            await ReadCountyDataFromWeb(keepACopy, file);
+        }
+
+        private static async Task ReadCountyDataFromWeb(bool keepACopy, string folderName)
+        {
+            var data = await GitFilePicker.GetFilesAsync(file);
+            DeserializeData(data);
+            if (keepACopy)
+                File.WriteAllText(Path.Combine(folder, file), data);
+        }
+
+        private static void DeserializeData(string stringdata)
+        {
+            var allData = Newtonsoft.Json.JsonConvert.DeserializeObject<List<CountyData>>(stringdata);
             ReadItalyCounties(allData);
 
             CountyDatas = new List<CountyData>();
@@ -51,13 +64,20 @@ namespace CovidItalyAnalyzer.Library
             }
         }
 
+        private static void ReadCountyData(string folderName)
+        {
+            string fileName = Path.Combine(folderName, file);
+            if (!File.Exists(fileName))
+                return;
+            DeserializeData(File.ReadAllText(fileName));
+        }
+
         internal static IOrderedEnumerable<CountyData> ReadCountyData(int region, int county)
         {
             return DataReaderCounty.CountyDatas
              .Where(r => r.codice_regione == region && r.codice_provincia == county)
              .OrderBy(d => d.data);
         }
-
 
         internal static IOrderedEnumerable<ItalyCounty> ReadCounties(int region)
         {

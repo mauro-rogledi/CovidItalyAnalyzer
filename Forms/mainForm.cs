@@ -5,6 +5,9 @@ using MetroFramework.Forms;
 using System;
 using System.IO;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace CovidItalyAnalyzer.Forms
 {
@@ -15,10 +18,8 @@ namespace CovidItalyAnalyzer.Forms
             SettingManager.ReadData();
             InitializeComponent();
 
-            if (DataReader.ReadData())
-                InitializeControls();
-
-            btnRefresh.Enabled = true; // SettingManager.UseGitHub;
+            DataReader.ReadData().Wait();
+            InitializeControls();
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
@@ -34,45 +35,52 @@ namespace CovidItalyAnalyzer.Forms
             btnRefresh.Enabled = false;
             lblStatus.Text = Properties.Resources.DownloadingData;
 
-            var (fromClone, message) = await DataReader.RefreshData();
+            await DataReader.RefreshData();
 
-            lblStatus.Text = message;
             btnRefresh.Enabled = true;
 
-            if (fromClone)
-                InitializeControls();
 
+            await Task.Factory.StartNew(() =>
+                {
+                    lblStatus.BeginInvoke((Action)(() => 
+                    { 
+                        lblStatus.Text = Properties.Resources.DownloadedData; ;
+                        Application.DoEvents();
+                        Thread.Sleep(3000); 
+                        lblStatus.Text = ""; }));
+                 }
+            );
             RefreshCharts();
-        }
-
-        private void RefreshCharts()
-        {
-            pieControl1.RefreshData();
-            pieControl2.RefreshData();
-            pieControl3.RefreshData();
-            pieControl4.RefreshData();
-            cartesianChartRegionControl1.RefreshData();
-            cartesianChartRegionControl2.RefreshData();
-            cartesianChartCountyControl1.RefreshData();
-            cartesianChartCountyControl2.RefreshData();
-
-            regionDataControl1.InitializeCombo();
-            countyDataControl1.InitializeCombo();
-        }
-
-        private void InitializeControls()
-        {
-            pieControl1.InitializeControl();
-            pieControl2.InitializeControl();
-            pieControl3.InitializeControl();
-            pieControl4.InitializeControl();
-            cartesianChartRegionControl1.InitializeControls();
-            cartesianChartRegionControl2.InitializeControls();
-            cartesianChartCountyControl1.InitializeControls();
-            cartesianChartCountyControl2.InitializeControls();
-
-            regionDataControl1.InitializeControls();
-            countyDataControl1.InitializeControls();
-        }
     }
+
+    private void RefreshCharts()
+    {
+        pieControl1.RefreshData();
+        pieControl2.RefreshData();
+        pieControl3.RefreshData();
+        pieControl4.RefreshData();
+        cartesianChartRegionControl1.RefreshData();
+        cartesianChartRegionControl2.RefreshData();
+        cartesianChartCountyControl1.RefreshData();
+        cartesianChartCountyControl2.RefreshData();
+
+        regionDataControl1.InitializeCombo();
+        countyDataControl1.InitializeCombo();
+    }
+
+    private void InitializeControls()
+    {
+        pieControl1.InitializeControl();
+        pieControl2.InitializeControl();
+        pieControl3.InitializeControl();
+        pieControl4.InitializeControl();
+        cartesianChartRegionControl1.InitializeControls();
+        cartesianChartRegionControl2.InitializeControls();
+        cartesianChartCountyControl1.InitializeControls();
+        cartesianChartCountyControl2.InitializeControls();
+
+        regionDataControl1.InitializeControls();
+        countyDataControl1.InitializeControls();
+    }
+}
 }
