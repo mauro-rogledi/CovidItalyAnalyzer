@@ -18,7 +18,7 @@ namespace CovidItalyAnalyzer.Forms
             if (DataReader.ReadData())
                 InitializeControls();
 
-            btnRefresh.Enabled = SettingManager.UseGitHub;
+            btnRefresh.Enabled = true; // SettingManager.UseGitHub;
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
@@ -26,7 +26,7 @@ namespace CovidItalyAnalyzer.Forms
             new SettingsForm()
                 .ShowDialog();
 
-            btnRefresh.Enabled = SettingManager.UseGitHub;
+            btnRefresh.Enabled = !SettingManager.FolderData.IsEmpty();
         }
 
         private async void bntRefresh_Click(object sender, EventArgs e)

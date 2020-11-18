@@ -151,6 +151,7 @@ namespace CovidItalyAnalyzer.Library
             });
 
             this.chart.LegendLocation = LegendLocation.Top;
+            this.chart.Zoom = ZoomingOptions.X;
         }
 
         public void FillChartWithDailySwabCases(int region, string regionName)
@@ -208,6 +209,7 @@ namespace CovidItalyAnalyzer.Library
             });
 
             this.chart.LegendLocation = LegendLocation.Top;
+            this.chart.Zoom = ZoomingOptions.X;
         }
 
         private void FillChartWithLinearSeries(int region, string regionName, string titleSeries, string titleY, Func<int, List<ReturnData>> func)
@@ -272,6 +274,7 @@ namespace CovidItalyAnalyzer.Library
             });
 
             this.chart.LegendLocation = LegendLocation.Top;
+            this.chart.Zoom = ZoomingOptions.X;
         }
     }
 }

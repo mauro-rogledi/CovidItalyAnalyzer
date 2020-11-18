@@ -81,6 +81,7 @@ namespace CovidItalyAnalyzer.Library
             });
 
             this.chart.LegendLocation = LegendLocation.Top;
+            this.chart.Zoom = ZoomingOptions.X;
         }
 
         public void FillChartWithWeeklyCases(int region, int county, string countyName)
@@ -121,6 +122,7 @@ namespace CovidItalyAnalyzer.Library
             });
 
             this.chart.LegendLocation = LegendLocation.Top;
+            this.chart.Zoom = ZoomingOptions.X;
         }
 
         public void FillChartWitTotalCases(int region, int county, string countyName)
@@ -161,6 +163,7 @@ namespace CovidItalyAnalyzer.Library
             });
 
             this.chart.LegendLocation = LegendLocation.Top;
+            this.chart.Zoom = ZoomingOptions.X;
         }
     }
 }

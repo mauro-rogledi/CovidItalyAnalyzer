@@ -21,17 +21,17 @@ namespace CovidItalyAnalyzer.Library
                 // Credential information to fetch
                 LibGit2Sharp.PullOptions options = new LibGit2Sharp.PullOptions();
                 options.FetchOptions = new FetchOptions();
-                options.FetchOptions.CredentialsProvider = new CredentialsHandler(
-                    (url, usernameFromUrl, types) =>
-                        new UsernamePasswordCredentials()
-                        {
-                            Username = SettingManager.UserName,
-                            Password = SettingManager.Password
-                        });
+                //options.FetchOptions.CredentialsProvider = new CredentialsHandler(
+                //    (url, usernameFromUrl, types) =>
+                //        new UsernamePasswordCredentials()
+                //        {
+                //            Username = SettingManager.UserName,
+                //            Password = SettingManager.Password
+                //        });
 
                 // User information to create a merge commit
                 var signature = new LibGit2Sharp.Signature(
-                    new Identity(SettingManager.UserName, SettingManager.Email), DateTimeOffset.Now);
+                    new Identity("john.doe", "john.doe@dummy.com"), DateTimeOffset.Now);
 
                 // Pull
                 return await Task.Run(() =>
