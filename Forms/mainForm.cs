@@ -18,7 +18,13 @@ namespace CovidItalyAnalyzer.Forms
             SettingManager.ReadData();
             InitializeComponent();
 
-            DataReader.ReadData().Wait();
+
+        }
+
+        protected override async void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            await DataReader.ReadData();
             InitializeControls();
         }
 

@@ -19,7 +19,7 @@ namespace CovidItalyAnalyzer.Library
 
         private static async Task<string> GetDataFromGitAsync(string url)
         {
-            return httpClient.GetStringAsync(url).GetAwaiter().GetResult();
+            return await httpClient.GetStringAsync(url);
         }
     }
 }
