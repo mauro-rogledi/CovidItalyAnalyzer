@@ -98,7 +98,7 @@ namespace CovidItalyAnalyzer.Library
                 RegionDatas.AddRange(
                     data.Select((curr, i) =>
                     {
-                        curr.nuovi_tamponi = i > 0 ? curr.tamponi - data[i - 1].tamponi : curr.tamponi;
+                        curr.nuovi_tamponi = Math.Abs(i > 0 ? curr.tamponi - data[i - 1].tamponi : curr.tamponi);
                         curr.nuovi_deceduti = i > 0 ? curr.deceduti - data[i - 1].deceduti : curr.deceduti;
                         return curr;
                     })
@@ -165,7 +165,7 @@ namespace CovidItalyAnalyzer.Library
             if (Object.ReferenceEquals(obj, null)) return 0;
 
             //Get hash code for the Name field if it is not null.
-            return obj.denominazione_regione.GetHashCode() ^ obj.codice_regione.GetHashCode();
+            return obj.denominazione_regione.GetHashCode() ^ obj.codice_regione.GetHashCode() ^ obj.data.GetHashCode();
         }
     }
 }

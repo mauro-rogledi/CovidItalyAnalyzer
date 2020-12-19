@@ -40,24 +40,25 @@ namespace CovidItalyAnalyzer.Forms
         {
             btnRefresh.Enabled = false;
             lblStatus.Text = Properties.Resources.DownloadingData;
+            Application.DoEvents();
 
             await DataReader.RefreshData();
 
             btnRefresh.Enabled = true;
-
-
-            await Task.Factory.StartNew(() =>
-                {
-                    lblStatus.BeginInvoke((Action)(() => 
-                    { 
-                        lblStatus.Text = Properties.Resources.DownloadedData; ;
-                        Application.DoEvents();
-                        Thread.Sleep(3000); 
-                        lblStatus.Text = ""; }));
-                 }
-            );
             RefreshCharts();
-    }
+
+            await Task.Run(() =>
+                {
+                    lblStatus.BeginInvoke((Action)(async () =>
+                    {
+                        lblStatus.Text = Properties.Resources.DownloadedData;
+                        Application.DoEvents();
+                        await Task.Delay(3000);
+                        lblStatus.Text = "";
+                    }));
+                }
+            );
+        }
 
     private void RefreshCharts()
     {

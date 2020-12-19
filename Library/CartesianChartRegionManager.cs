@@ -15,7 +15,7 @@ namespace CovidItalyAnalyzer.Library
         private Calendar myCal;
         private CalendarWeekRule myCWR;
         private DayOfWeek myFirstDOW;
-        private CartesianChart chart;
+        private readonly CartesianChart chart;
 
         public Func<ComboData> Region { get; set; }
 
@@ -39,9 +39,6 @@ namespace CovidItalyAnalyzer.Library
             ChartAvailable.Add(Properties.Resources.DailyDeads, (int r, string s) => FillChartWitDailyDeads(r, s));
             ChartAvailable.Add(Properties.Resources.IntensiveCare, (int r, string s) => FillChartWitIntensiveCare(r, s));
             ChartAvailable.Add(Properties.Resources.Hospital, (int r, string s) => FillChartWitHospital(r, s));
-
-
-
         }
 
         public string[] GetChartAvailable()
