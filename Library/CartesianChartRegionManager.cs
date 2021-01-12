@@ -31,12 +31,13 @@ namespace CovidItalyAnalyzer.Library
 
             ChartAvailable.Add(Properties.Resources.DailyCases, (int r, string s) => FillChartWitNewPositives(r, s));
             ChartAvailable.Add(Properties.Resources.DailySwabs, (int r, string s) => FillChartWitDailySwabs(r, s));
+            ChartAvailable.Add(Properties.Resources.DailyCasesSwabs, (int r, string s) => FillChartWithDailySwabCases(r, s));
+            ChartAvailable.Add(Properties.Resources.DailyDeads, (int r, string s) => FillChartWitDailyDeads(r, s));
             ChartAvailable.Add(Properties.Resources.WeeklyCases, (int r, string s) => FillChartWithWeeklyCases(r, s));
             ChartAvailable.Add(Properties.Resources.WeeklySwabs, (int r, string s) => FillChartWithWeeklySwab(r, s));
             ChartAvailable.Add(Properties.Resources.WeeklyCasesSwabs, (int r, string s) => FillChartWithWeeklySwabCases(r, s));
+            ChartAvailable.Add(Properties.Resources.WeeklyDeads, (int r, string s) => FillChartWithWeeklyDead(r, s));
             ChartAvailable.Add(Properties.Resources.TotalCases, (int r, string s) => FillChartWitTotalCases(r, s));
-            ChartAvailable.Add(Properties.Resources.DailyCasesSwabs, (int r, string s) => FillChartWithDailySwabCases(r, s));
-            ChartAvailable.Add(Properties.Resources.DailyDeads, (int r, string s) => FillChartWitDailyDeads(r, s));
             ChartAvailable.Add(Properties.Resources.IntensiveCare, (int r, string s) => FillChartWitIntensiveCare(r, s));
             ChartAvailable.Add(Properties.Resources.Hospital, (int r, string s) => FillChartWitHospital(r, s));
         }
@@ -91,6 +92,11 @@ namespace CovidItalyAnalyzer.Library
         public void FillChartWithWeeklySwab(int region, string regionName)
         {
             FillChartWithColumnSeries(region, regionName, Properties.Resources.WeeklySwabs, Properties.Resources.Swabs, DataExtractorRegion.FillWeeklySwab);
+        }
+
+        public void FillChartWithWeeklyDead(int region, string regionName)
+        {
+            FillChartWithColumnSeries(region, regionName, Properties.Resources.WeeklySwabs, Properties.Resources.Swabs, DataExtractorRegion.FillWeeklyDeads);
         }
 
         public void FillChartWithWeeklySwabCases(int region, string regionName)

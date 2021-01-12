@@ -198,6 +198,9 @@
   <data name="WeeklyCasesSwabs" xml:space="preserve">
     <value>Totale settimanale casi e tamponi</value>
   </data>
+  <data name="WeeklyDeads" xml:space="preserve">
+    <value>Totale settimanale morti</value>
+  </data>
   <data name="WeeklySwabs" xml:space="preserve">
     <value>Totale settimanale tamponi</value>
   </data>

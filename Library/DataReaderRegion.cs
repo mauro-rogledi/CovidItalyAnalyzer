@@ -99,6 +99,8 @@ namespace CovidItalyAnalyzer.Library
                     data.Select((curr, i) =>
                     {
                         curr.nuovi_tamponi = Math.Abs(i > 0 ? curr.tamponi - data[i - 1].tamponi : curr.tamponi);
+                        curr.nuovi_terapia_intensiva = i > 0 ? curr.terapia_intensiva - data[i - 1].terapia_intensiva : curr.terapia_intensiva;
+                        curr.nuovi_ospedalizzati = i > 0 ? curr.totale_ospedalizzati - data[i - 1].totale_ospedalizzati : curr.totale_ospedalizzati;
                         curr.nuovi_deceduti = i > 0 ? curr.deceduti - data[i - 1].deceduti : curr.deceduti;
                         return curr;
                     })

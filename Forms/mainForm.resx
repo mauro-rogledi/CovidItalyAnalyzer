@@ -493,7 +493,7 @@
     <value>0, 0</value>
   </data>
   <data name="cartesianChartRegionControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1169, 194</value>
+    <value>1266, 273</value>
   </data>
   <data name="cartesianChartRegionControl1.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -529,7 +529,7 @@
     <value>0, 0</value>
   </data>
   <data name="cartesianChartRegionControl2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1169, 239</value>
+    <value>1266, 338</value>
   </data>
   <data name="cartesianChartRegionControl2.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -559,10 +559,10 @@
     <value>1</value>
   </data>
   <data name="spcRegion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1169, 437</value>
+    <value>1266, 615</value>
   </data>
   <data name="spcRegion.SplitterDistance" type="System.Int32, mscorlib">
-    <value>194</value>
+    <value>273</value>
   </data>
   <data name="spcRegion.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -607,7 +607,7 @@
     <value>4, 38</value>
   </data>
   <data name="tpgRegions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1169, 437</value>
+    <value>1266, 615</value>
   </data>
   <data name="tpgRegions.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -778,7 +778,7 @@
     <value>23, 60</value>
   </data>
   <data name="metroTabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1177, 479</value>
+    <value>1274, 657</value>
   </data>
   <data name="metroTabControl1.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -799,7 +799,7 @@
     <value>Top, Right</value>
   </data>
   <data name="btnRefresh.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1117, 22</value>
+    <value>1214, 22</value>
   </data>
   <data name="btnRefresh.Size" type="System.Drawing.Size, System.Drawing">
     <value>36, 31</value>
@@ -823,7 +823,7 @@
     <value>Top, Right</value>
   </data>
   <data name="btnSettings.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1160, 22</value>
+    <value>1257, 22</value>
   </data>
   <data name="btnSettings.Size" type="System.Drawing.Size, System.Drawing">
     <value>36, 31</value>
@@ -874,13 +874,10 @@
     <value>7, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1223, 559</value>
+    <value>1320, 737</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Verdana, 8.25pt</value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="$this.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>23, 60, 23, 20</value>

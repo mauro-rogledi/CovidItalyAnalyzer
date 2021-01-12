@@ -223,6 +223,9 @@
   <data name="WeeklyCasesSwabs" xml:space="preserve">
     <value>Total weekly cases and swabs</value>
   </data>
+  <data name="WeeklyDeads" xml:space="preserve">
+    <value>Total weekly deads</value>
+  </data>
   <data name="WeeklySwabs" xml:space="preserve">
     <value>Total weekly swabs</value>
   </data>

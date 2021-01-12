@@ -160,6 +160,34 @@ namespace CovidItalyAnalyzer.Library
                 .ToList();
         }
 
+        public static List<ReturnData> FillWeeklyDeads(int region)
+        {
+            return FillDailyDeads(region)
+                .GroupBy(g => myCal.GetWeekOfYear(g.data, myCWR, myFirstDOW))
+                .Select((s) => new ReturnData
+                {
+                    data = s.Max(f => f.data),
+                    lbl = s.Max(f => f.data).ToString("dd/MM/yy"),
+                    value = s.Sum(c => c.value)
+                }
+                )
+                .ToList();
+        }
+
+        //public static List<ReturnData> FillWeeklyHospital(int region)
+        //{
+        //    return FillDailyHos(region)
+        //        .GroupBy(g => myCal.GetWeekOfYear(g.data, myCWR, myFirstDOW))
+        //        .Select((s) => new ReturnData
+        //        {
+        //            data = s.Max(f => f.data),
+        //            lbl = s.Max(f => f.data).ToString("dd/MM/yy"),
+        //            value = s.Sum(c => c.value)
+        //        }
+        //        )
+        //        .ToList();
+        //}
+
         public static List<ReturnData> FillWeeklySwabCases(int region)
         {
             var cases = FillWeeklyCases(region);

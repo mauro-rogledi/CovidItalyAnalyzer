@@ -384,6 +384,15 @@ namespace CovidItalyAnalyzer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Total weekly deads.
+        /// </summary>
+        internal static string WeeklyDeads {
+            get {
+                return ResourceManager.GetString("WeeklyDeads", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Total weekly swabs.
         /// </summary>
         internal static string WeeklySwabs {

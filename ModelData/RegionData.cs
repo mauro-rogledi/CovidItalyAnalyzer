@@ -30,5 +30,11 @@ namespace CovidItalyAnalyzer.ModelData
 
         [JsonIgnore]
         public float nuovi_deceduti { get; set; }
+
+        [JsonIgnore]
+        public float nuovi_ospedalizzati { get; set; }
+
+        [JsonIgnore]
+        public float nuovi_terapia_intensiva { get; set; }
     }
 }
