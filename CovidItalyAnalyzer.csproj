@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icons8-coronavirus-96.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
       <HintPath>packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
@@ -226,6 +229,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-undo-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="icons8-coronavirus-96.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

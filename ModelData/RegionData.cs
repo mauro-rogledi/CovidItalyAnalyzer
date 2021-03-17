@@ -25,6 +25,11 @@ namespace CovidItalyAnalyzer.ModelData
         public float tamponi { get; set; }
         public float? casi_testati { get; set; }
 
+        public float? totale_positivi_test_molecolare { get; set; }
+        public float? totale_positivi_test_antigenico_rapido { get; set; }
+        public float? tamponi_test_molecolare { get; set; }
+        public float? tamponi_test_antigenico_rapido { get; set; }
+
         [JsonIgnore]
         public float nuovi_tamponi { get; set; }
 
@@ -36,5 +41,9 @@ namespace CovidItalyAnalyzer.ModelData
 
         [JsonIgnore]
         public float nuovi_terapia_intensiva { get; set; }
+
+        public float? ingressi_terapia_intensiva { get; set; }
+
+
     }
 }
